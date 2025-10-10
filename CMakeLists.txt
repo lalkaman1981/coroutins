@@ -5,9 +5,14 @@ cmake_minimum_required(VERSION 3.15)
 #! CHANGE YOUR PROJECT NAME
 #  It is used as your project's main executable name. 
 set(PROJECT_NAME coroutines)
-project(${PROJECT_NAME} C CXX) # project(${PROJECT_NAME} C CXX ASM)
+project(${PROJECT_NAME} C CXX ASM) # project(${PROJECT_NAME} C CXX ASM)
+enable_language(ASM)
+
 
 set(CMAKE_CXX_STANDARD 20)
+
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -O0 -fno-omit-frame-pointer")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -fno-omit-frame-pointer")
 
 ##########################################################
 # User configurable options of the template
@@ -55,11 +60,24 @@ include(cmake/CompilerWarnings.cmake)
 ##########################################################
 
 #! Project main executable source compilation
-add_executable(${PROJECT_NAME} main.cpp
-				src/coroutines.c)
+add_executable(${PROJECT_NAME} src/create_stack/main.cpp
+				src/create_stack/create_stack.cpp
+				src/create_stack/create_stack.S
+				)
 
 #! Put path to your project headers
 target_include_directories(${PROJECT_NAME} PRIVATE include)
+
+if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+  target_link_options(${PROJECT_NAME} PRIVATE "-no-pie")
+endif()
+
+
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -no-pie")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fno-pie -no-pie")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-pie -no-pie")
+
+
 
 #! Add external packages
 # options_parser requires boost::program_options library
