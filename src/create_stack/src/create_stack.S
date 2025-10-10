@@ -17,10 +17,10 @@ old_rsp: .quad 0
 
 
 .section .text
-.global change_stack
-.type change_stack, @function
+.global create_coro_stack
+.type create_coro_stack, @function
 
-change_stack:
+create_coro_stack:
     jmp save_data
 
 continue_after_save:
