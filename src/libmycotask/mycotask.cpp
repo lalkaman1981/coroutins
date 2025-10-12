@@ -29,12 +29,14 @@ mycotask::mycotask(void (*func)(), size_t stack_size)
 void mycotask::start() {
     if (!started_) {
         started_ = true;
+        current_task_ = this;
         switch_context(&main_ctx_, &ctx_);
     }
 }
 
 void mycotask::resume() {
     if (started_) {
+        current_task_ = this;
         switch_context(&main_ctx_, &ctx_);
     }
 }
