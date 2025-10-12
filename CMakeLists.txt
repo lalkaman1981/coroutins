@@ -60,13 +60,18 @@ include(cmake/CompilerWarnings.cmake)
 ##########################################################
 
 #! Project main executable source compilation
-add_executable(${PROJECT_NAME} src/create_stack/main.cpp
-				src/create_stack/create_stack.cpp
-				src/create_stack/create_stack.S
-				)
+add_executable(${PROJECT_NAME} src/create_stack/src/main.cpp
+				src/create_stack/src/create_stack.cpp
+				src/create_stack/src/create_stack.S
+)
+
+add_executable(test_coro_switch src/create_stack/src/test_coro_switch.cpp
+								src/create_stack/src/switch_context.S
+)
 
 #! Put path to your project headers
 target_include_directories(${PROJECT_NAME} PRIVATE include)
+target_include_directories(test_coro_switch PRIVATE include)
 
 if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
   target_link_options(${PROJECT_NAME} PRIVATE "-no-pie")
