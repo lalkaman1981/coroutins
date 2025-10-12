@@ -1,7 +1,7 @@
 # Course project: Coroutines
 Authors (team):/
 Pavlosiuk Roman
-Milian Bogdan
+Milian Bohdan
 Shtohryn Oleg
 Stetsiuk Kostantin
 Variant: <mark>VARIANT SHOULD BE HERE</mark>
@@ -43,4 +43,5 @@ into the data folder</mark>
 Additional tasks not listed in the previous paragraph would not be graded.
 
 Be sure to provide a complete list of authors.
+
 
