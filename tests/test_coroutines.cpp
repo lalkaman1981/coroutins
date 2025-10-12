@@ -102,7 +102,6 @@ int main() {
         std::cout << "[Task] Started" << std::endl;
         mycotask::current_task()->yield(); // yield back to main
         std::cout << "[Task] Resumed" << std::endl;
-        mycotask::current_task()->yield();
     });
 
     std::cout << "[Main] Task created" << std::endl;
