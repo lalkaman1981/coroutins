@@ -5,6 +5,9 @@ cmake_minimum_required(VERSION 3.15)
 #! CHANGE YOUR PROJECT NAME
 #  It is used as your project's main executable name. 
 set(PROJECT_NAME coroutines)
+set(TEST_COROUTINES test_coroutines)
+set(STRUCTURED_PROJECT_NAME libmycor)
+
 project(${PROJECT_NAME} C CXX ASM) # project(${PROJECT_NAME} C CXX ASM)
 enable_language(ASM)
 
@@ -65,13 +68,26 @@ add_executable(${PROJECT_NAME} src/create_stack/src/main.cpp
 				src/create_stack/src/create_stack.S
 )
 
-add_executable(test_coro_switch src/create_stack/src/test_coro_switch.cpp
-								src/create_stack/src/switch_context.S
+add_executable(${TEST_COROUTINES}  src/libmycotask/mycotask.cpp
+		src/create_stack/src/create_stack.cpp
+		src/create_stack/src/create_stack.S
+		src/create_stack/src/switch_context.S
+		tests/test_coroutines.cpp
+)
+
+add_executable(${STRUCTURED_PROJECT_NAME} src/libmycotask/mycotask.cpp
+		src/create_stack/src/create_stack.cpp
+		src/create_stack/src/create_stack.S
+		src/create_stack/src/switch_context.S
+
 )
 
 #! Put path to your project headers
 target_include_directories(${PROJECT_NAME} PRIVATE include)
-target_include_directories(test_coro_switch PRIVATE include)
+#target_include_directories(test_coro_switch PRIVATE include)
+target_include_directories(${TEST_COROUTINES} PRIVATE include)
+target_include_directories(${STRUCTURED_PROJECT_NAME} PRIVATE include)
+
 
 if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
   target_link_options(${PROJECT_NAME} PRIVATE "-no-pie")
