@@ -10,6 +10,8 @@
 #include <vector>
 #include "coroutines.h"
 
+
+
 class mycotask {
 private:
     coro_context ctx_;
@@ -21,6 +23,7 @@ private:
     static mycotask* current_task_;
 
     void setup_coroutine();
+    void entry_point();
 
 public:
     explicit mycotask(void (*func)(), size_t stack_size = 16384);
