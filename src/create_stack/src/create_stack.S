@@ -1,71 +1,66 @@
 .intel_syntax noprefix
 
-; .section .note.GNU-stack,"",@progbits
-
-.section .bss
-.balign 16
-stack_space:
-    .zero 16384
-
-.balign 16
-fxsave_area:
-    .zero 512
-
-.section .data
-.global old_rsp
-old_rsp: .quad 0
-
-
+.section .note.GNU-stack,"",@progbits
 .section .text
 .global create_coro_stack
 .type create_coro_stack, @function
 
 create_coro_stack:
-    jmp save_data
+    # rdx = new_context, rcx = old_context
+    # rdi = fn, rsi = args
+    # offsets: old_rsp:0, fxsave_area:16, stack_base:528, stack_top:536
 
-continue_after_save:
-    lea rsp, [rip + stack_space + 16384]
-
-    mov rax, rdi    # rax = fn
-    mov rdi, rsi    # args -> rdi
-    xor rsi, rsi
-
-    call rax
-
-    jmp restore_data
-
-end_after_restore:
-    ret
-
-save_data:
-
+    pushfq
     push rax
-    push rbp
     push rbx
+    push rcx
+    push rdx
+    push rsi
+    push rdi
+    push rbp
+    push r8
+    push r9
+    push r10
+    push r11
     push r12
     push r13
     push r14
     push r15
 
-    mov QWORD PTR [rip + old_rsp], rsp
-
-    lea rax, [rip + fxsave_area]
+    mov QWORD PTR [rcx + 0], rsp
+    lea rax, [rcx + 16]
     fxsave [rax]
+    mov r12, rcx
 
-    jmp continue_after_save
+    lea rsp, [rdx + 536]
+    and rsp, -16
 
-restore_data:
+    mov rax, rdi            # rax = fn
+    mov rdi, rsi            # args -> rdi
+    xor rsi, rsi
 
-    lea rax, [rip + fxsave_area]
+    call rax
+
+    mov rcx, r12
+    lea rax, [rcx + 16]
     fxrstor [rax]
+    mov rsp, QWORD PTR [rcx + 0]
 
-    mov rsp, QWORD PTR [rip + old_rsp]
     pop r15
     pop r14
     pop r13
     pop r12
-    pop rbx
+    pop r11
+    pop r10
+    pop r9
+    pop r8
     pop rbp
+    pop rdi
+    pop rsi
+    pop rdx
+    pop rcx
+    pop rbx
     pop rax
+    popfq
 
-    jmp end_after_restore
+    ret

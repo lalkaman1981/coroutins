@@ -1,15 +1,11 @@
 #pragma once
 #include <cstdint>
 
-typedef struct coro_regs {
-    // put all user regs here
-} coro_regs;
-
-struct coro_context {
+struct alignas(16) coro_context {
     uint64_t old_rsp;
     uint64_t pad;
-    alignas(16) unsigned char fxsave_area[512];
-    void* stack_base;
+    char fxsave_area[512]; 
+    char* stack_base;
     void* stack_top;
 };
 

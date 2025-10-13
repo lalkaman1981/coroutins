@@ -1,21 +1,37 @@
-#include <string>
-#include <iostream>
-
-#include <printf.h>
 #include "create_stack.h"
 
-void func2(std::string str1, std::string str2) {
-    std::cout << str2 << " " << str1 << std::endl;
+std::vector<coro_context*> manager;
+
+void func(){
+    std::cout << "Before switch from 2" << std::endl;
 }
 
-void func(std::string str1, std::string str2) {
-    std::cout << str1 << " " << str2 << std::endl;
-    call_coro(func2, str1, str2);
+void func2() {
+    std::cout << "Before switch from 2" << std::endl;
+    switch_context(manager[2], manager[1]);
+    std::cout << "After switch from 2" << std::endl;
+    switch_context(manager[2], manager[0]);
+}
+
+void func1() {
+    std::cout << "Before switch from 1" << std::endl;
+    switch_context(manager[1], manager[0]);
+    std::cout << "After switch from 1" << std::endl;
+    switch_context(manager[1], manager[2]);
 }
 
 int main() {
-    std::string str1 = "bibaboba";
-    std::string str2 = "hi!";
+    coro_context* cr1 = create_coro_context();
+    coro_context* cr2 = create_coro_context();
+    coro_context* cr3 = create_coro_context();
 
-    call_coro(func, str1, str2);
+    manager.push_back(cr1);
+    manager.push_back(cr2);
+    manager.push_back(cr3);
+
+    call_coro(cr1, cr2, func1);
+
+    call_coro(cr1, cr3, func2);
+
+    std::cout << "Done!" << std::endl;
 }
