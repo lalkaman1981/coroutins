@@ -8,7 +8,11 @@ void func(){
 
 void func2() {
     std::cout << "Before switch from 2" << std::endl;
-    switch_context(manager[2], manager[1]);
+
+    // auto* old = manager[2];
+    // auto* nw = manager[1];
+
+    // switch_context(old, nw);
     std::cout << "After switch from 2" << std::endl;
     switch_context(manager[2], manager[0]);
 }

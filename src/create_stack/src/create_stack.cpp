@@ -13,11 +13,11 @@ extern "C" void call_fn(void* p) {
     try {
         (*pf)();
     } catch(...) {
-        // delete pf;
+        delete pf;
         throw;
     }
 
-    // delete pf;
+    delete pf;
 }
 
 
