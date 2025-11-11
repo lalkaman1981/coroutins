@@ -42,9 +42,9 @@ create_coro_stack:
     call rax
 
     mov rcx, r12
+    mov rsp, QWORD PTR [rcx + 0]
     lea rax, [rcx + 16]
     fxrstor [rax]
-    mov rsp, QWORD PTR [rcx + 0]
 
     pop r15
     pop r14

@@ -2,24 +2,24 @@
 
 std::vector<coro_context *> manager;
 
-void func() { std::cout << "Before switch from 2" << std::endl; }
+int a = 0;
 
 void func2() {
-  std::cout << "Before switch from 2" << std::endl;
-
-  // auto* old = manager[2];
-  // auto* nw = manager[1];
-
-  // switch_context(old, nw);
-  std::cout << "After switch from 2" << std::endl;
-  switch_context(manager[2], manager[0]);
+  std::cout << "Step 2" << std::endl;
+  switch_context(manager[2], manager[1]);
+  std::cout << "Step 4" << std::endl;
+  switch_context(manager[2], manager[1]);
+  a = 1; //there must be somethin for function not to end
 }
 
 void func1() {
-  std::cout << "Before switch from 1" << std::endl;
+  std::cout << "Step 1" << std::endl;
   switch_context(manager[1], manager[0]);
-  std::cout << "After switch from 1" << std::endl;
+  std::cout << "Step 3" << std::endl;
   switch_context(manager[1], manager[2]);
+  std::cout << "Step 5" << std::endl;
+  switch_context(manager[1], manager[0]);
+  a = 1; //there must be somethin for function not to end
 }
 
 int main() {
