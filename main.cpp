@@ -9,7 +9,9 @@ void func2() {
   switch_context(manager[2], manager[1]);
   std::cout << "Step 4" << std::endl;
   switch_context(manager[2], manager[1]);
-  a = 1; //there must be somethin for function not to end
+
+  volatile int prevent_optimization = 0;
+  (void)prevent_optimization;
 }
 
 void func1() {
@@ -19,7 +21,9 @@ void func1() {
   switch_context(manager[1], manager[2]);
   std::cout << "Step 5" << std::endl;
   switch_context(manager[1], manager[0]);
-  a = 1; //there must be somethin for function not to end
+
+  volatile int prevent_optimization = 0;
+  (void)prevent_optimization;
 }
 
 int main() {
