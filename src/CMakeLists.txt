@@ -2,6 +2,7 @@ add_library(libcoro STATIC
   ./create_stack/create_stack.cpp
   ./create_stack/create_stack.S
   ./create_stack/switch_context.S
+        libmycotask/mycotask.cpp
 )
 
 target_include_directories(libcoro PUBLIC
