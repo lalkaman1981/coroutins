@@ -8,7 +8,7 @@
 switch_context:
 
     pushfq
-    push rax    
+    push rax
     push rbx
     push rcx
     push rdx
@@ -24,15 +24,16 @@ switch_context:
     push r14
     push r15
 
+
+#    lea rax, [rdi + 16]
+#    fxsave [rax]
     mov QWORD PTR [rdi + 0], rsp
-    lea rax, [rdi + 16]
-    fxsave [rax]
 
 # restore:
     
     mov rsp, QWORD PTR [rsi + 0]
-    lea rax, [rsi + 16]
-    fxrstor [rax]
+#    lea rax, [rsi + 16]
+#    fxrstor [rax]
 
     pop r15
     pop r14

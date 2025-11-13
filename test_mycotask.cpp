@@ -42,16 +42,22 @@
 #include "libmycotask/mycotask.h"
 
 int main() {
+
     const auto task = std::make_shared<mycotask>([](){
         std::cout << "[Task] Started" << std::endl;
-        mycotask::current_task()->yield(); // yield back to main
+        mycotask::current_task()->yield();
         std::cout << "[Task] Resumed" << std::endl;
+        mycotask::current_task()->yield();
+        std::cout << "[Task] Complete" << std::endl;
     });
 
     std::cout << "[Main] Task created" << std::endl;
     task->start();
 
     std::cout << "[Main] After first yield" << std::endl;
+    task->resume();
+
+    std::cout << "[Main] After second yield" << std::endl;
     task->resume();
 
     std::cout << "[Main] Task finished" << std::endl;

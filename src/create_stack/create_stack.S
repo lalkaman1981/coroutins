@@ -10,6 +10,7 @@ create_coro_stack:
     # rdi = fn, rsi = args
     # offsets: old_rsp:0, fxsave_area:16, stack_base:528, stack_top:536
 
+
     pushfq
     push rax
     push rbx
@@ -27,9 +28,10 @@ create_coro_stack:
     push r14
     push r15
 
+#    lea rax, [rcx + 16]
+#    fxsave [rax]
     mov QWORD PTR [rcx + 0], rsp
-    lea rax, [rcx + 16]
-    fxsave [rax]
+
     mov r12, rcx
 
     lea rsp, [rdx + 536]
@@ -42,9 +44,11 @@ create_coro_stack:
     call rax
 
     mov rcx, r12
+
+
     mov rsp, QWORD PTR [rcx + 0]
-    lea rax, [rcx + 16]
-    fxrstor [rax]
+#    lea rax, [rcx + 16]
+#    fxrstor [rax]
 
     pop r15
     pop r14

@@ -4,7 +4,6 @@
 
 #include "mycotask.h"
 
-#include <iostream>
 
 coro_context* mycotask::main_ctx_ = create_coro_context();
 mycotask* mycotask::current_task_ = nullptr;
@@ -32,25 +31,32 @@ mycotask::mycotask(void (*func)())
     : func_(func) {
     ctx_ = create_coro_context();
 }
+
 void mycotask::start() {
     if (!started_) {
         started_ = true;
         current_task_ = this;
         // switch_context(&main_ctx_, &ctx_);
         call_coro(main_ctx_, ctx_, wrapper_func);
-
     }
 }
+
 
 void mycotask::resume() {
     if (started_) {
         current_task_ = this;
+
         switch_context(main_ctx_, ctx_);
     }
+
+    volatile int prevent_optimization = 0;
+    (void)prevent_optimization;
 }
 
 void mycotask::yield() {
     switch_context(ctx_, main_ctx_);
+    volatile int prevent_optimization = 0;
+    (void)prevent_optimization;
 }
 
 mycotask* mycotask::current_task() {
