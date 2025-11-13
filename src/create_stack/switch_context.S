@@ -27,6 +27,7 @@ switch_context:
 
 #    lea rax, [rdi + 16]
 #    fxsave [rax]
+
     mov QWORD PTR [rdi + 0], rsp
 
 # restore:

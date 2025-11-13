@@ -6,7 +6,6 @@
 #define STACK_SIZE 16384
 
 #include <functional>
-#include <cstring>
 
 extern "C" void call_fn(void *p) {
   auto pf = static_cast<std::function<void()> *>(p);
@@ -21,4 +20,13 @@ extern "C" void call_fn(void *p) {
   delete pf;
 }
 
+coro_context *create_coro_context() {
+  coro_context *cr_context = new coro_context;
 
+  char *stack_base = new char[STACK_SIZE];
+
+  cr_context->stack_base = stack_base;
+  cr_context->stack_top = stack_base + STACK_SIZE;
+
+  return cr_context;
+}
