@@ -7,6 +7,7 @@ cmake_minimum_required(VERSION 3.15)
 set(PROJECT_NAME coroutines)
 set(TEST_COROUTINES test_coroutines)
 set(STRUCTURED_PROJECT_NAME libmycor)
+set(TEST_MY_COTASK test_mycotask)
 
 project(${PROJECT_NAME} C CXX ASM) # project(${PROJECT_NAME} C CXX ASM)
 enable_language(ASM)
@@ -41,12 +42,21 @@ include(cmake/CompilerWarnings.cmake)
 ##########################################################
 
 add_subdirectory(src)
+#================================================================
 #! Project main executable source compilation
 add_executable(${PROJECT_NAME} main.cpp)
 
 target_link_libraries(${PROJECT_NAME} PRIVATE libcoro)
 if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
   target_link_options(${PROJECT_NAME} PRIVATE "-no-pie")
+endif()
+
+#================================================================
+add_executable(${TEST_MY_COTASK} test_mycotask.cpp)
+
+target_link_libraries(${TEST_MY_COTASK} PRIVATE libcoro)
+if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+  target_link_options(${TEST_MY_COTASK} PRIVATE "-no-pie")
 endif()
 
 

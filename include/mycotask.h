@@ -14,8 +14,9 @@
 
 class mycotask {
 private:
-    coro_context ctx_{};
-    std::vector<uint8_t> stack_;
+    // coro_context ctx_{};
+    coro_context* ctx_;
+    // std::vector<uint8_t> stack_;
     void (*func_)();
     bool started_ = false;
 
@@ -26,7 +27,8 @@ private:
     static void wrapper_func();
 
 public:
-    explicit mycotask(void (*func)(), size_t stack_size = 16384);
+    // explicit mycotask(void (*func)(), size_t stack_size = 16384);
+    explicit mycotask(void (*func)());
 
     void start();
     void resume();
