@@ -7,3 +7,4 @@ add_library(libcoro STATIC
 target_include_directories(libcoro PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}
 )
+
