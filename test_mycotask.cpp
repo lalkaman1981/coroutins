@@ -16,28 +16,29 @@ mycotask test_input_coro_task(int a, int b, int& result) {
 
 int main() {
 
-    const auto task = std::make_shared<mycotask>([](){
-        std::cout << "[Task] Started" << std::endl;
-        mycotask::current_task()->yield();
-        std::cout << "[Task] Resumed" << std::endl;
-        mycotask::current_task()->yield();
-        std::cout << "[Task] Complete" << std::endl;
-    });
-    // int result = -69420;
-    // const auto task = std::make_shared<mycotask>(test_input_coro_task(1, 2, result));
+    // const auto task = std::make_shared<mycotask>([](){
+    //     std::cout << "[Task] Started" << std::endl;
+    //     mycotask::current_task()->yield();
+    //     std::cout << "[Task] Resumed" << std::endl;
+    //     mycotask::current_task()->yield();
+    //     std::cout << "[Task] Complete" << std::endl;
+    // });
+    // mycotask::main_ctx_ = create_coro_context();
+    int result = -69420;
+    auto task = mycotask(test_input_coro_task(1, 2, result));
 
     std::cout << "[Main] Task created" << std::endl;
-    task->start();
+    task.start();
 
     std::cout << "[Main] After first yield" << std::endl;
-    task->resume();
+    task.resume();
 
     std::cout << "[Main] After second yield" << std::endl;
-    task->resume();
+    task.resume();
 
     std::cout << "[Main] Task finished" << std::endl;
 
-    // std::cout << "[Main] Result: " << result << std::endl;
+    std::cout << "[Main] Result: " << result << std::endl;
 
     return 0;
 }

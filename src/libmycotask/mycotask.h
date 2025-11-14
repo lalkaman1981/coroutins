@@ -18,12 +18,13 @@ private:
     void (*func_)();
     bool started_ = false;
 
-    static coro_context* main_ctx_;
     static mycotask* current_task_;
 
     static void wrapper_func();
 
 public:
+    static coro_context* main_ctx_;
+
     explicit mycotask(void (*func)());
 
     void resume();

@@ -33,6 +33,7 @@ mycotask::mycotask(void (*func)())
 
 void mycotask::resume() {
     if (started_) {
+        std::cout << "RESUME CALLED" << std::endl;
         current_task_ = this;
 
         switch_context(main_ctx_, ctx_);
