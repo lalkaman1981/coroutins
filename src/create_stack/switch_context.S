@@ -33,6 +33,7 @@ switch_context:
 # restore:
     
     mov rsp, QWORD PTR [rsi + 0]
+
     lea rax, [rsi + 16]
 #    fxrstor [rax]
 
