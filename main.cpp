@@ -50,9 +50,9 @@ int main() {
   int *res2 = new int;
   *res2 = 0;
 
-  call_coro(cr1, cr2, func1, 1.0, 2.5, res1);
+  call_coro(cr1, cr2, func1, 1, 2, res1);
 
-  call_coro(cr1, cr3, func2, 3.3, 4.6, res2);
+  call_coro(cr1, cr3, func2, 3, 4, res2);
 
   std::cout << *res1 << std::endl;
   std::cout << *res2 << std::endl;
