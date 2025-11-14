@@ -10,11 +10,11 @@ mycotask* mycotask::current_task_ = nullptr;
 
 
 void mycotask::wrapper_func() {
-    std::cout << "A wrapper called!" << std::endl;
+    // std::cout << "A wrapper called!" << std::endl;
     mycotask* self = current_task_;
 
     self->func_();
-    std::cout << "Hello" << std::endl;
+    // std::cout << "Hello" << std::endl;
 
     // a func returned
     self->started_ = false;
@@ -23,7 +23,6 @@ void mycotask::wrapper_func() {
     switch_context(self->ctx_, main_ctx_);
     volatile int prevent_optimization = 0;
     (void)prevent_optimization;
-
 }
 
 
@@ -36,8 +35,10 @@ void mycotask::start() {
     if (!started_) {
         started_ = true;
         current_task_ = this;
-        // switch_context(&main_ctx_, &ctx_);
         call_coro(main_ctx_, ctx_, wrapper_func);
+    }
+    else {
+        std::cerr << "mycotask: you can only start not started coroutines! Please call mycotask::resume() now!" << std::endl;
     }
 }
 
@@ -47,7 +48,9 @@ void mycotask::resume() {
 
         switch_context(main_ctx_, ctx_);
     }
-
+    else {
+        std::cerr << "mycotask: you can only resume a started coroutine! Please call mycotask::start() first!" << std::endl;
+    }
     volatile int prevent_optimization = 0;
     (void)prevent_optimization;
 }

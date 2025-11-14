@@ -14,9 +14,7 @@
 
 class mycotask {
 private:
-    // coro_context ctx_{};
     coro_context* ctx_;
-    // std::vector<uint8_t> stack_;
     void (*func_)();
     bool started_ = false;
 
