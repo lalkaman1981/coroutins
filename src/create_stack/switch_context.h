@@ -4,7 +4,7 @@
 struct alignas(16) coro_context {
     uint64_t old_rsp;
     uint64_t pad;
-    alignas(16) unsigned char fxsave_area[512]; 
+    alignas(16) unsigned char fxsave_area[512];
     char* stack_base;
     char* stack_top;
 };

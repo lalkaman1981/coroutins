@@ -28,12 +28,12 @@ create_coro_stack:
     push r15
 
     lea rax, [rcx + 16]
-#    fxsave [rax]
+    fxsave [rax]
     mov QWORD PTR [rcx + 0], rsp
 
     mov r12, rcx
 
-    lea rsp, [rdx + 536]
+    mov rsp, [rdx + 536]
     and rsp, -16
 
     mov rax, rdi            # rax = fn
@@ -47,7 +47,7 @@ create_coro_stack:
 
     mov rsp, QWORD PTR [rcx + 0]
     lea rax, [rcx + 16]
-#    fxrstor [rax]
+    fxrstor [rax]
 
     pop r15
     pop r14

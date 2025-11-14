@@ -25,8 +25,7 @@ switch_context:
     push r15
 
     lea rax, [rdi + 16]
-#    fxsave [rax]
-
+    fxsave [rax]
 
     mov QWORD PTR [rdi + 0], rsp
 
@@ -35,7 +34,7 @@ switch_context:
     mov rsp, QWORD PTR [rsi + 0]
 
     lea rax, [rsi + 16]
-#    fxrstor [rax]
+    fxrstor [rax]
 
     pop r15
     pop r14
