@@ -39,6 +39,7 @@ void mycotask::resume() {
     }
     else {
         std::cerr << "mycotask: you can only resume a started coroutine! Please call mycotask::start() first!" << std::endl;
+        exit(EXIT_FAILURE);
     }
     volatile int prevent_optimization = 0;
     (void)prevent_optimization;

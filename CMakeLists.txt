@@ -44,6 +44,9 @@ include(cmake/CompilerWarnings.cmake)
 ##########################################################
 
 add_subdirectory(src)
+include_directories(src/libmycomanager)
+include_directories(src/libmycotask)
+
 #================================================================
 #! Project main executable source compilation
 add_executable(${PROJECT_NAME} main.cpp)
