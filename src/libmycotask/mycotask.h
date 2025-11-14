@@ -9,7 +9,7 @@
 #include <memory>
 #include <vector>
 #include "coroutines.h"
-
+#include <cstdlib>
 
 
 class mycotask {
@@ -40,6 +40,7 @@ public:
         }
         else {
             std::cerr << "mycotask: you can only start not started coroutines! Please call mycotask::resume() now!" << std::endl;
+            exit(EXIT_FAILURE);
         }
     }
 
