@@ -10,6 +10,7 @@ set(STRUCTURED_PROJECT_NAME libmycor)
 set(TEST_MY_COTASK test_mycotask)
 
 project(${PROJECT_NAME} C CXX ASM) # project(${PROJECT_NAME} C CXX ASM)
+
 enable_language(ASM)
 
 

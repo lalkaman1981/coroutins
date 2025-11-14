@@ -44,7 +44,7 @@ void mycotask::start() {
 void mycotask::resume() {
     if (started_) {
         current_task_ = this;
-        
+
         switch_context(main_ctx_, ctx_);
     }
 
