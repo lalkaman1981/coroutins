@@ -8,6 +8,7 @@ set(PROJECT_NAME coroutines)
 set(TEST_COROUTINES test_coroutines)
 set(STRUCTURED_PROJECT_NAME libmycor)
 set(TEST_MY_COTASK test_mycotask)
+set(TEST_MYCOMANAGER test_mycomanager)
 
 project(${PROJECT_NAME} C CXX ASM) # project(${PROJECT_NAME} C CXX ASM)
 
@@ -59,7 +60,15 @@ target_link_libraries(${TEST_MY_COTASK} PRIVATE libcoro)
 if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
   target_link_options(${TEST_MY_COTASK} PRIVATE "-no-pie")
 endif()
+#================================================================
 
+add_executable(${TEST_MYCOMANAGER} test_mycomanager.cpp)
+
+target_link_libraries(${TEST_MYCOMANAGER} PRIVATE libcoro)
+if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+  target_link_options(${TEST_MYCOMANAGER} PRIVATE "-no-pie")
+endif()
+#================================================================
 
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -no-pie")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fno-pie -no-pie")

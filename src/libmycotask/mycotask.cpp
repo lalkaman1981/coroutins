@@ -31,17 +31,6 @@ mycotask::mycotask(void (*func)())
     ctx_ = create_coro_context();
 }
 
-void mycotask::start() {
-    if (!started_) {
-        started_ = true;
-        current_task_ = this;
-        call_coro(main_ctx_, ctx_, wrapper_func);
-    }
-    else {
-        std::cerr << "mycotask: you can only start not started coroutines! Please call mycotask::resume() now!" << std::endl;
-    }
-}
-
 void mycotask::resume() {
     if (started_) {
         current_task_ = this;

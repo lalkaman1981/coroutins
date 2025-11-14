@@ -26,11 +26,23 @@ private:
 public:
     explicit mycotask(void (*func)());
 
-    void start();
     void resume();
     void yield();
 
     static mycotask* current_task();
+
+    template <typename... Args>
+    void start(Args &&...args) {
+        if (!started_) {
+            started_ = true;
+            current_task_ = this;
+            call_coro(main_ctx_, ctx_, wrapper_func, std::forward<Args>(args)...);
+        }
+        else {
+            std::cerr << "mycotask: you can only start not started coroutines! Please call mycotask::resume() now!" << std::endl;
+        }
+    }
+
 };
 
 #endif // COROUTINES_MYCOTASK_H
