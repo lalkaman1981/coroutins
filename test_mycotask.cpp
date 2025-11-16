@@ -18,18 +18,32 @@ void task_body(int a, int b, int& result) {
 
 int main() {
     int result = -69420;
+    //
+    // mycotask task = mycotask::create_task(task_body, 1, 2, std::ref(result));
+    //
+    // std::cout << "[Main] Task created\n";
+    //
+    // task.start();
+    // std::cout << "[Main] After first yield\n";
+    //
+    // task.resume();
+    // std::cout << "[Main] After second yield\n";
+    //
+    // std::cout << "RESULT: " << result << std::endl;
+    mycotask t1 = mycotask::create_task(task_body, 1, 2, std::ref(result));
+    mycotask t2 = mycotask::create_task(task_body, 3, 4, std::ref(result));
+    mycotask t3 = std::move(t1);
 
-    mycotask task = mycotask::create_task(task_body, 1, 2, std::ref(result));
+
+    // mycotask task = mycotask::create_task(task_body, 1, 2, std::ref(result));
 
     std::cout << "[Main] Task created\n";
 
-    task.start();
+    t3.start();
     std::cout << "[Main] After first yield\n";
 
-    task.resume();
+    t3.resume();
     std::cout << "[Main] After second yield\n";
 
     std::cout << "RESULT: " << result << std::endl;
-    // task.resume();
-    // std::cout << "[Main] Finished result=" << result << "\n";
 }

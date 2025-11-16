@@ -42,11 +42,8 @@ void mycotask::resume() {
 
 }
 
-void mycotask::yield() const
-{
+void mycotask::yield() const {
     switch_context(ctx_, main_ctx_);
-    // volatile int prevent_optimization = 0;
-    // (void)prevent_optimization;
 }
 
 bool mycotask::has_ended() const { return ended_;}

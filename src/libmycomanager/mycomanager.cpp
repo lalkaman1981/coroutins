@@ -5,7 +5,7 @@
 #include "mycomanager.h"
 
 void mycomanager::add_task(mycotask task) {
-    mycotasks_.emplace_back(task);
+    mycotasks_.emplace_back(std::move(task));
 }
 
 void mycomanager::change_task_priority(int old_priority, int new_priority) {

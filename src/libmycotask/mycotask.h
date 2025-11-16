@@ -11,6 +11,12 @@
 #include "coroutines.h"
 #include <cstdlib>
 
+/**
+ * Custom coroutine class.
+ * Do not remove its location from the source of creation
+ * For now, only std::move from not started coroutine is allowed
+ * <(raw pointer in the private fields)>
+ */
 class mycotask
 {
 private:
@@ -44,6 +50,29 @@ private:
     }
 
 public:
+
+    // can not copy this object, move only
+    mycotask(const mycotask&) = delete;
+    mycotask& operator=(const mycotask&) = delete;
+
+    mycotask(mycotask&& other) noexcept
+        : ctx_(other.ctx_), func_(std::move(other.func_)), started_(other.started_) {
+        other.ctx_ = nullptr;
+        other.started_ = false;
+        other.ended_ = false;
+    }
+
+    mycotask& operator=(mycotask&& other) noexcept {
+        if (this != &other) {
+            ctx_ = other.ctx_;
+            func_ = std::move(other.func_);
+            started_ = other.started_;
+            other.ctx_ = nullptr;
+            other.started_ = false;
+            other.ended_ = false;
+        }
+        return *this;
+    }
 
     template<typename F, typename... Args>
     static mycotask create_task(F&& f, Args&&... args) {
