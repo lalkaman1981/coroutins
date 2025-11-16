@@ -11,40 +11,55 @@
 #include "coroutines.h"
 #include <cstdlib>
 
-
-class mycotask {
+class mycotask
+{
 private:
-    coro_context* ctx_;
-    void (*func_)();
-    bool started_ = false;
-
     static mycotask* current_task_;
-
-    static void wrapper_func();
-
-public:
     static coro_context* main_ctx_;
 
-    explicit mycotask(void (*func)());
+    coro_context* ctx_;
+    // void (*func_)();
+    std::function<void()> func_;
+    bool started_ = false;
+    bool ended_ = false;
 
-    void resume();
-    void yield();
+    static void trampoline(void* arg) {
+        const auto* fn = static_cast<std::function<void()>*>(arg);
+        // run user code
+        (*fn)();
+        // a func returned
+        current_task_ -> started_ = false;
+        current_task_ -> ended_ = true;
 
-    static mycotask* current_task();
+        switch_context(current_task_->ctx_, main_ctx_);
 
-    template <typename... Args>
-    void start(Args &&...args) {
-        if (!started_) {
-            started_ = true;
-            current_task_ = this;
-            call_coro(main_ctx_, ctx_, wrapper_func, std::forward<Args>(args)...);
-        }
-        else {
-            std::cerr << "mycotask: you can only start not started coroutines! Please call mycotask::resume() now!" << std::endl;
-            exit(EXIT_FAILURE);
-        }
+        volatile int prevent_optimization = 0;
+        (void)prevent_optimization;
     }
 
+    explicit mycotask(std::function<void()> f)
+        : func_(std::move(f))
+    {
+        ctx_ = create_coro_context();
+    }
+
+public:
+
+    template<typename F, typename... Args>
+    static mycotask create_task(F&& f, Args&&... args) {
+        return mycotask(
+            std::bind(std::forward<F>(f), std::forward<Args>(args)...)
+        );
+    }
+
+
+    void start();
+    void resume();
+    void yield() const;
+    bool has_ended() const;
+
+    static mycotask* current_task();
 };
+
 
 #endif // COROUTINES_MYCOTASK_H
