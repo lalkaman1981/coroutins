@@ -4,10 +4,85 @@
 
 #include "mycotask.h"
 
-
+// Static member initialization
 coro_context* mycotask::main_ctx_ = create_coro_context();
 mycotask* mycotask::current_task_ = nullptr;
+std::atomic<std::size_t> mycotask::global_id_counter_ = 69;
 
+// ---- Private trampoline function ----
+void mycotask::trampoline(void* arg) {
+    const auto* fn = static_cast<std::function<void()>*>(arg);
+    // run user code
+    (*fn)();
+    // a func returned
+    current_task_->started_ = false;
+    current_task_->ended_ = true;
+
+    switch_context(current_task_->ctx_, main_ctx_);
+
+    volatile int prevent_optimization = 0;
+    (void)prevent_optimization;
+}
+
+// ---- Constructors ----
+mycotask::mycotask(std::function<void()> f)
+    : func_(std::move(f)) {
+    ctx_ = create_coro_context();
+    id_ = global_id_counter_.fetch_add(1, std::memory_order_relaxed);
+    // std::cout << "ID: " << id_ << std::endl;
+}
+
+mycotask::mycotask()
+{
+    mycotask::create_task([] {
+        std::cout << "[DEBUG] This is a default initialization for cotask" << std::endl;
+        exit(EXIT_FAILURE);
+    });
+}
+
+mycotask::mycotask(mycotask&& other) noexcept
+    : ctx_(other.ctx_),
+      func_(std::move(other.func_)),
+      started_(other.started_),
+      ended_(other.ended_),
+      next_(std::move(other.next_))      // <-- MOVE THE HOOK
+{
+    // Move atomic id
+    id_.store(other.id_.load(std::memory_order_relaxed),
+              std::memory_order_relaxed);
+
+    // VERY IMPORTANT:
+    // Reset other.next_ so it does not point into any list
+    other.next_ = nullptr;                  // <-- reinitialize moved-from hook
+
+    // Reset the rest of the moved-from object
+    other.ctx_ = nullptr;
+    other.started_ = false;
+    other.ended_ = false;
+    other.id_.store(0, std::memory_order_relaxed);
+}
+
+
+
+mycotask& mycotask::operator=(mycotask&& other) noexcept {
+    if (this != &other) {
+        ctx_ = other.ctx_;
+        func_ = std::move(other.func_);
+        started_ = other.started_;
+        ended_ = other.ended_;
+        id_.store(other.id_.load(std::memory_order_relaxed), std::memory_order_relaxed);
+
+
+        other.ctx_ = nullptr;
+        other.started_ = false;
+        other.ended_ = false;
+        other.id_.store(0, std::memory_order_relaxed); // reset safely
+
+    }
+    return *this;
+}
+
+// ---- Public member functions ----
 void mycotask::start() {
     if (started_) {
         std::cerr << "mycotask: you can only start not started coroutines! Please call mycotask::resume() now!" << std::endl;
@@ -21,10 +96,8 @@ void mycotask::start() {
     auto* pf = new std::function<void()>(func_);
     create_coro_stack(&trampoline, pf, ctx_, main_ctx_);
 
-    switch_context(main_ctx_, ctx_);
+    // switch_context(main_ctx_, ctx_);
 }
-
-
 
 void mycotask::resume() {
     if (ended_) {
@@ -39,13 +112,12 @@ void mycotask::resume() {
     current_task_ = this;
 
     switch_context(main_ctx_, ctx_);
-
 }
 
 void mycotask::yield() const {
     switch_context(ctx_, main_ctx_);
 }
 
-bool mycotask::has_ended() const { return ended_;}
+bool mycotask::has_ended() const { return ended_; }
 
-mycotask* mycotask::current_task() {return current_task_;}
+mycotask* mycotask::current_task() { return current_task_; }

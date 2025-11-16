@@ -5,11 +5,14 @@
 #ifndef COROUTINES_MYCOTASK_H
 #define COROUTINES_MYCOTASK_H
 
+#include <atomic>
 #include <cstring>
 #include <memory>
 #include <vector>
 #include "coroutines.h"
 #include <cstdlib>
+#include <functional>
+#include <iostream>
 
 /**
  * Custom coroutine class.
@@ -22,57 +25,37 @@ class mycotask
 private:
     static mycotask* current_task_;
     static coro_context* main_ctx_;
+    static std::atomic<std::size_t> global_id_counter_;
 
     coro_context* ctx_;
-    // void (*func_)();
     std::function<void()> func_;
     bool started_ = false;
     bool ended_ = false;
+    std::atomic<std::size_t> id_;
 
-    static void trampoline(void* arg) {
-        const auto* fn = static_cast<std::function<void()>*>(arg);
-        // run user code
-        (*fn)();
-        // a func returned
-        current_task_ -> started_ = false;
-        current_task_ -> ended_ = true;
+    friend class mycomanager;
+    friend class MycoNodeTraits;
 
-        switch_context(current_task_->ctx_, main_ctx_);
+    // for mycomanager
+    mycotask* next_ = nullptr;
 
-        volatile int prevent_optimization = 0;
-        (void)prevent_optimization;
-    }
+    static void trampoline(void* arg);
 
-    explicit mycotask(std::function<void()> f)
-        : func_(std::move(f))
-    {
-        ctx_ = create_coro_context();
-    }
+    explicit mycotask(std::function<void()> f);
+
+    void switch_2coro_execution();
+
+    mycotask(); // should not be called. to satisfy the compiler only
+
+    [[nodiscard]] mycotask* next() const { return next_; }
 
 public:
-
     // can not copy this object, move only
     mycotask(const mycotask&) = delete;
     mycotask& operator=(const mycotask&) = delete;
 
-    mycotask(mycotask&& other) noexcept
-        : ctx_(other.ctx_), func_(std::move(other.func_)), started_(other.started_) {
-        other.ctx_ = nullptr;
-        other.started_ = false;
-        other.ended_ = false;
-    }
-
-    mycotask& operator=(mycotask&& other) noexcept {
-        if (this != &other) {
-            ctx_ = other.ctx_;
-            func_ = std::move(other.func_);
-            started_ = other.started_;
-            other.ctx_ = nullptr;
-            other.started_ = false;
-            other.ended_ = false;
-        }
-        return *this;
-    }
+    mycotask(mycotask&& other) noexcept;
+    mycotask& operator=(mycotask&& other) noexcept;
 
     template<typename F, typename... Args>
     static mycotask create_task(F&& f, Args&&... args) {
@@ -81,13 +64,18 @@ public:
         );
     }
 
+    bool operator==(const mycotask& other) const {
+        return this->id_ == other.id_;
+    }
 
     void start();
     void resume();
     void yield() const;
-    bool has_ended() const;
 
     static mycotask* current_task();
+
+    [[nodiscard]] bool has_ended() const;
+    [[nodiscard]] size_t get_id() const { return id_; }
 };
 
 
