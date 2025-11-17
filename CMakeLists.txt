@@ -49,7 +49,7 @@ include_directories(src/libmycotask)
 
 #================================================================
 #! Project main executable source compilation
-add_executable(${PROJECT_NAME} myfp_main.cpp)
+add_executable(${PROJECT_NAME} main.cpp)
 
 target_link_libraries(${PROJECT_NAME} PRIVATE libcoro)
 if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
