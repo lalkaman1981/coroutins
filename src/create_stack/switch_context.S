@@ -1,12 +1,14 @@
 .intel_syntax noprefix
 
+#ifdef _WIN32
+.section .text
+#else
 .section .note.GNU-stack,"",@progbits
 .section .text
+#endif
+
 .global switch_context
-.type switch_context, @function
-
 switch_context:
-
     pushfq
     push rax
     push rbx
@@ -23,18 +25,28 @@ switch_context:
     push r13
     push r14
     push r15
+   
+#ifdef _WIN32
+    mov QWORD PTR [rcx + 0], rsp
+    
+    lea rax, [rcx + 16]
+    fxsave [rax]
+    
+    lea rax, [rdx + 16]
+    fxrstor [rax]
+
+    mov rsp, QWORD PTR [rdx + 0]
+#else
+    mov QWORD PTR [rdi + 0], rsp
 
     lea rax, [rdi + 16]
     fxsave [rax]
-
-    mov QWORD PTR [rdi + 0], rsp
-
-# restore:
     
-    mov rsp, QWORD PTR [rsi + 0]
-
     lea rax, [rsi + 16]
     fxrstor [rax]
+
+    mov rsp, QWORD PTR [rsi + 0]
+#endif
 
     pop r15
     pop r14
@@ -52,5 +64,5 @@ switch_context:
     pop rbx
     pop rax
     popfq
-
+    
     ret

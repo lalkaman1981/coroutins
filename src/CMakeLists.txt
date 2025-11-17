@@ -10,3 +10,5 @@ target_include_directories(libcoro PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
+find_package(Boost REQUIRED)
+target_link_libraries(libcoro PUBLIC Boost::boost)
