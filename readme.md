@@ -3,7 +3,7 @@ Authors (team):
 Pavlosiuk Roman,
 Milian Bohdan,
 Shtohryn Oleg,
-Stetsiuk Kostantin
+Stetsiuk Kostiantyn
 
 ## Overview
 
@@ -200,5 +200,6 @@ myco_async(manager, [fut]() mutable {
     std::cout << "[string-consumer] Received: " << s << "\n";
 });
 ``` 
+
 
 ### Complete examples you can find in `examples/` directory
