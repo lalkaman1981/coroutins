@@ -57,4 +57,11 @@ int main() {
     std::cout << "RESULT: " << result << std::endl;
 
     return 0;
+
+    // mycomanager mycomanager{std::move(task3)};
+    // mycomanager mycomanager{};
+    //
+    // mycomanager.append_task(std::move(task3));
+    //
+    // mycomanager.run();
 }

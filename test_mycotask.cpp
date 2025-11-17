@@ -72,7 +72,6 @@ int main() {
     t2.resume();
     t1.resume();
 
-    t2.resume();
     t1.resume();
 
 

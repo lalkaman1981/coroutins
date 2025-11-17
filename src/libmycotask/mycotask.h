@@ -39,11 +39,12 @@ private:
     // for mycomanager
     mycotask* next_ = nullptr;
 
+    // wrapper function
     static void trampoline(void* arg);
 
     explicit mycotask(std::function<void()> f);
 
-    void switch_2coro_execution();
+    // void switch_2coro_execution(); // may be needed here (ask petro xd)
 
     mycotask(); // should not be called. to satisfy the compiler only
 

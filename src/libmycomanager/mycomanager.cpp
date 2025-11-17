@@ -5,7 +5,7 @@
 #include "mycomanager.h"
 
 mycomanager::mycomanager(const size_t max_number_of_tasks)
-    : max_number_of_tasks_(max_number_of_tasks), head_() {
+    : head_(), max_number_of_tasks_(max_number_of_tasks) {
     algo::init(&head_);
     first = true;
 }
@@ -26,8 +26,8 @@ void mycomanager::append_task(mycotask task) {
         return;
     }
 
-    // Allocate new node
-    mycotask* stored = new mycotask(std::move(task));
+    // allocate new node
+    auto* stored = new mycotask(std::move(task));
     algo::init(stored);
 
     algo::link_after(tail_, stored);
@@ -41,13 +41,13 @@ void mycomanager::append_task(mycotask task) {
 
 
 void mycomanager::run() {
-    if (algo::is_empty(&head_)) {
-        std::cerr << "mycomanager: you cannot start an empty coroutines manager! Please, add some tasks!" << std::endl;
-        return;
-    }
 
+    if (head_.id_ == 0) {
+        std::cerr << "mycomanager: you cannot start an empty coroutines manager! Please, add some tasks!" << std::endl;
+        exit(EXIT_FAILURE);
+    }
     mycotask* cur = &head_;
-    mycotask* prev; // what if delete right away? (the first node after 1 iter)
+    mycotask* prev;
     int count = 0;
 
     while (true) {
@@ -62,9 +62,6 @@ void mycomanager::run() {
             if (cur != &head_) delete cur;
             cur = prev->next();  // move forward
             continue;
-
-            // cur = NodeTraits::get_next(cur);
-            // continue;
         }
 
         if (!cur->started_) {
@@ -74,6 +71,5 @@ void mycomanager::run() {
         }
         prev = cur;
         cur = NodeTraits::get_next(cur);
-
     }
 }

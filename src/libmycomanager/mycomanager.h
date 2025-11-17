@@ -34,8 +34,6 @@ private:
 
     bool first;
 
-    void delete_task(mycotask* node);
-
 public:
     /**
      * This constructor automatically assigns a default priority to each created task.
@@ -59,14 +57,15 @@ public:
     void append_task(mycotask task);
 
     /**
-     * Change the priorities of the tasks
-     */
-    void change_task_priority(int old_priority, int new_priority);
-
-    /**
      * Run previously created tasks in order
      */
     void run();
+
+    // /**
+    //  * Change the priorities of the tasks
+    //  */
+    // void change_task_priority(int old_priority, int new_priority);
+
 };
 
 #endif // COROUTINES_MYCOMANAGER_H
