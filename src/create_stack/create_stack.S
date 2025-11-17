@@ -1,15 +1,14 @@
 .intel_syntax noprefix
 
+#ifdef _WIN32
+.section .text
+#else
 .section .note.GNU-stack,"",@progbits
 .section .text
+#endif
+
 .global create_coro_stack
-.type create_coro_stack, @function
-
 create_coro_stack:
-    # rdx = new_context, rcx = old_context
-    # rdi = fn, rsi = args
-    # offsets: old_rsp:0, fxsave_area:16, stack_base:528, stack_top:536
-
     pushfq
     push rax
     push rbx
@@ -27,6 +26,29 @@ create_coro_stack:
     push r14
     push r15
 
+#ifdef _WIN32
+    lea rax, [r9 + 16]
+    fxsave [rax]
+    mov QWORD PTR [r9 + 0], rsp
+
+    mov r12, r9
+
+    mov rsp, [r8 + 536]
+    and rsp, -16
+    sub rsp, 32
+
+    mov rax, rcx
+    mov rcx, rdx
+    xor rdx, rdx
+
+    call rax
+
+    mov r9, r12
+
+    mov rsp, QWORD PTR [r9 + 0]
+    lea rax, [r9 + 16]
+    fxrstor [rax]
+#else
     lea rax, [rcx + 16]
     fxsave [rax]
     mov QWORD PTR [rcx + 0], rsp
@@ -44,10 +66,10 @@ create_coro_stack:
 
     mov rcx, r12
 
-
     mov rsp, QWORD PTR [rcx + 0]
     lea rax, [rcx + 16]
     fxrstor [rax]
+#endif
 
     pop r15
     pop r14
