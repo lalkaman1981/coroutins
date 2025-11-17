@@ -1,4 +1,4 @@
-#include "src/libmyfp/myfp.h"
+#include "myfp.h"
 #include <iostream>
 #include <string>
 
