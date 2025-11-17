@@ -4,17 +4,21 @@
 
 #include "mycomanager.h"
 
+mycotask mycomanager::default_task = mycotask();
+
+
 mycomanager::mycomanager(const size_t max_number_of_tasks)
-    : head_(), max_number_of_tasks_(max_number_of_tasks) {
+    : max_number_of_tasks_(max_number_of_tasks) {
+    head_ = std::move(mycomanager::default_task);
     algo::init(&head_);
     first = true;
 }
 
-void mycomanager::append_task(mycotask task) {
-
+void mycomanager::append_task(mycotask&& task) {
     if (first) {
-        head_.~mycotask();
-        new (&head_) mycotask(std::move(task));
+        // head_.~mycotask();
+        // new (&head_) mycotask(std::move(task));
+        head_ = std::move(task);
 
         algo::init(&head_);
 

@@ -20,8 +20,7 @@
  * For now, only std::move from not started coroutine is allowed
  * <(raw pointer in the private fields)>
  */
-class mycotask
-{
+class mycotask {
 private:
     static mycotask* current_task_;
     static coro_context* main_ctx_;
@@ -57,6 +56,8 @@ public:
 
     mycotask(mycotask&& other) noexcept;
     mycotask& operator=(mycotask&& other) noexcept;
+
+    ~mycotask();
 
     template<typename F, typename... Args>
     static mycotask create_task(F&& f, Args&&... args) {

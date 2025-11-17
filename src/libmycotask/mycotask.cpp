@@ -13,6 +13,8 @@ void mycotask::trampoline(void* arg) {
     // run user code
     (*fn)();
     // a func returned
+    delete fn; // we do not need this anymore
+
     current_task_->started_ = false;
     current_task_->ended_ = true;
 
@@ -75,6 +77,22 @@ mycotask& mycotask::operator=(mycotask&& other) noexcept {
     return *this;
 }
 
+mycotask::~mycotask() { // TODO: too much destructor calling (fix it later)
+    // std::cout << "CALLED DESTRUCTOR ID: " << id_ << std::endl;
+
+    if (ctx_) {
+        delete[] ctx_->stack_base;
+        ctx_->stack_base = nullptr;
+        ctx_->stack_top  = nullptr;
+
+        // std::cout << "CALLED DESTRUCTOR WENT IN" << std::endl;
+
+        delete ctx_;
+        ctx_ = nullptr;
+    }
+}
+
+
 void mycotask::start() {
     if (started_) {
         std::cerr << "mycotask: you can only start not started coroutines! Please call mycotask::resume() now!" << std::endl;
@@ -98,7 +116,7 @@ void mycotask::resume() {
         std::cerr << "mycotask: you can only resume a started coroutine! Please call mycotask::start() first!" << std::endl;
         exit(EXIT_FAILURE);
     }
-    std::cout << "RESUME CALLED" << std::endl;
+    // std::cout << "RESUME CALLED" << std::endl;
     current_task_ = this;
 
     switch_context(main_ctx_, ctx_);

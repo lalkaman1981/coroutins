@@ -34,6 +34,8 @@ private:
 
     bool first;
 
+    static mycotask default_task;
+
 public:
     /**
      * This constructor automatically assigns a default priority to each created task.
@@ -54,7 +56,7 @@ public:
      * For example, if the current priorities are <1, 2, 3> and a new task is added,
      * the resulting priorities will be <1, 2, 3, 4>.
      */
-    void append_task(mycotask task);
+    void append_task(mycotask&& task);
 
     /**
      * Run previously created tasks in order
@@ -67,5 +69,4 @@ public:
     // void change_task_priority(int old_priority, int new_priority);
 
 };
-
 #endif // COROUTINES_MYCOMANAGER_H
