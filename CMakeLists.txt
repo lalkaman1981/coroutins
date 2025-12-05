@@ -18,7 +18,11 @@ enable_language(ASM)
 set(CMAKE_CXX_STANDARD 20)
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -O0 -fno-omit-frame-pointer")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -fno-omit-frame-pointer")
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -fno-omit-frame-pointer") ## set all the build types to -O0
+
+if(CMAKE_BUILD_TYPE STREQUAL "Debug") ## Now Release is without -O0
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -fno-omit-frame-pointer")
+endif()
 
 ##########################################################
 # User configurable options of the template
@@ -92,3 +96,5 @@ set(ALL_TARGETS ${PROJECT_NAME})
 
 # Include CMake setup
 include(cmake/main-config.cmake)
+
+add_subdirectory(tests)
