@@ -9,3 +9,4 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
 endif()
 
 add_subdirectory(benchmark_mycotask)
+add_subdirectory(benchmark_mycomanager)
