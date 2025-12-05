@@ -5,7 +5,6 @@
 #include <vector>
 #include <memory>
 
-// Include LibCopp headers
 #include <libcopp/coroutine/coroutine_context_container.h>
 
 const int ITERATIONS = 1'000'000;
@@ -39,9 +38,6 @@ double bench_mycotask_creation() {
     for(int i=0; i<N; ++i) {
         auto t = mycotask::create_task([]{});
         t.start();
-        // FIX: Do not call resume().
-        // The empty task finishes inside start() because it never yields.
-        // Calling resume() on an ended task causes mycotask to exit(1).
     }
     auto end = get_current_time_fenced();
     return (double)std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count() / N;
@@ -84,7 +80,6 @@ double bench_libcopp_creation() {
     const int N = 50000;
     auto start = get_current_time_fenced();
 
-    // Explicit function pointer to solve ambiguity
     int (*empty_task)(void*) = [](void*) { return 0; };
 
     for(int i=0; i<N; ++i) {
@@ -96,9 +91,7 @@ double bench_libcopp_creation() {
     return (double)std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count() / N;
 }
 
-// ==========================================
-// Main
-// ==========================================
+
 int main() {
     std::cout << "Library,Metric,TimeNS\n";
 

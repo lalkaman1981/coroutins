@@ -11,7 +11,6 @@
 #include <iostream>
 #include <cassert>
 
-// The fenced timer as requested
 inline std::chrono::high_resolution_clock::time_point get_current_time_fenced() {
     std::atomic_thread_fence(std::memory_order_seq_cst);
     auto res_time = std::chrono::high_resolution_clock::now();
@@ -19,7 +18,6 @@ inline std::chrono::high_resolution_clock::time_point get_current_time_fenced() 
     return res_time;
 }
 
-// Simple assertion macro that prints success/failure
 #define ASSERT_TRUE(condition) \
     do { \
         if (!(condition)) { \

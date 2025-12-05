@@ -9,7 +9,6 @@
 #include <string>
 #include <map>
 
-// Include Boost for external library testing
 #include <boost/container/vector.hpp>
 #include <boost/lexical_cast.hpp>
 
@@ -94,7 +93,6 @@ void heavy_prime_calc(int limit, int &count) {
         if (is_prime(i)) {
             count++;
         }
-        // Yield every 1000 numbers to stress context switching during heavy ALU load
         if (i % 1000 == 0) mycotask::current_task()->yield();
     }
 }
@@ -102,7 +100,6 @@ void heavy_prime_calc(int limit, int &count) {
 void run_heavy_compute_test() {
     std::cout << "[Test 04] Heavy Computation (Primes)... ";
     int count = 0;
-    // Calculate primes up to 50,000. Expected count: 5133
     auto task = mycotask::create_task(heavy_prime_calc, 50000, std::ref(count));
     
     task.start();
@@ -135,15 +132,13 @@ void run_recursion_test() {
     task.start();
     while(!task.has_ended()) task.resume();
     
-    ASSERT_EQ(counter, 101); // 0 to 100 is 101 calls
+    ASSERT_EQ(counter, 101);
     std::cout << "OK\n";
 }
 
 // ==========================================
 // TEST 6: Large Stack Frame Allocation
 // ==========================================
-// This ensures that the context switch saves/restores the stack pointer correctly
-// and doesn't overlap memory.
 void run_large_stack_test() {
     std::cout << "[Test 06] Large Stack Frame (Array)... ";
     
@@ -151,12 +146,10 @@ void run_large_stack_test() {
         // Allocate 100KB on stack
         char big_buffer[100 * 1024]; 
         
-        // Fill with pattern
         for(int i=0; i<100*1024; ++i) big_buffer[i] = (char)(i % 255);
         
         mycotask::current_task()->yield();
         
-        // Verify pattern after resume
         for(int i=0; i<100*1024; ++i) {
             if (big_buffer[i] != (char)(i % 255)) {
                 std::cerr << "Stack Corruption Detected!" << std::endl;
@@ -213,17 +206,14 @@ void run_fpu_test() {
         double a = 1.5;
         double b = 2.5;
         
-        // Use math functions to dirty registers
         double calc = std::pow(a, b); // 1.5 ^ 2.5 ~= 2.755
         
         mycotask::current_task()->yield();
         
-        // If context switch didn't save FPU regs, 'calc' might be garbage
         result_val = calc + std::sqrt(16.0); // + 4.0
     });
 
     task.start();
-    // Do some float math in main to potentially dirty main's registers
     volatile double noise = std::pow(3.3, 4.4);
     (void)noise;
     
@@ -254,11 +244,8 @@ void run_move_semantics_test() {
     t1.start();
     ASSERT_EQ(stage, 1);
 
-    // MOVE t1 to t2 while t1 is suspended
     mycotask t2 = std::move(t1);
 
-    // t1 should be empty/unusable (but safe to destroy)
-    // t2 should hold the context
     t2.resume();
     
     ASSERT_EQ(stage, 2);
@@ -267,20 +254,15 @@ void run_move_semantics_test() {
 }
 
 // ==========================================
-// TEST 10: Lambda Capture (Unique Ptr)
-// ==========================================
-// ==========================================
 // TEST 10: Lambda Capture (std::shared_ptr)
 // ==========================================
-// FIXED: Changed unique_ptr to shared_ptr because std::function
-// requires the lambda to be copy-constructible.
+
 void run_shared_ptr_capture_test() {
     std::cout << "[Test 10] Lambda Capture (std::shared_ptr)... ";
 
     auto ptr = std::make_shared<int>(999);
 
-    // Capture shared_ptr by value (copy).
-    // The lambda is now copyable, so std::function is happy.
+
     auto task = mycotask::create_task([p = ptr]() {
         if (*p != 999) {
             std::cerr << "Shared ptr capture failed" << std::endl;
@@ -293,8 +275,7 @@ void run_shared_ptr_capture_test() {
     task.start();
     task.resume();
 
-    // Verify the change is reflected in the original pointer
-    // (since they share the same underlying memory)
+
     if (*ptr != 1000) {
         std::cerr << "Pointer was not updated!" << std::endl;
         exit(1);
@@ -321,7 +302,6 @@ void run_matrix_test() {
                     C[i * SIZE + j] += A[i * SIZE + k] * B[k * SIZE + j];
                 }
             }
-            // Yield after every row computation
             mycotask::current_task()->yield();
         }
     });
@@ -329,7 +309,6 @@ void run_matrix_test() {
     task.start();
     while(!task.has_ended()) task.resume();
     
-    // Verify result: Dot product of [1,1...] and [2,2...] length 50 is 100
     ASSERT_EQ(C[0], 100);
     ASSERT_EQ(C[SIZE*SIZE-1], 100);
     std::cout << "OK\n";
@@ -345,12 +324,11 @@ void run_no_yield_test() {
         ran = true;
     });
     
-    task.start(); // Should run to completion immediately
+    task.start();
     ASSERT_TRUE(ran);
     ASSERT_TRUE(task.has_ended());
     
-    // Verify resuming an ended task crashes or errors handling (optional check)
-    // For now just ensure start() handled the full flow
+
     std::cout << "OK\n";
 }
 
