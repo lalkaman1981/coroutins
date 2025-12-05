@@ -5,8 +5,8 @@
 #include <type_traits>
 #include <vector>
 
-#include "../libmycomanager/mycomanager.h"
-#include "../libmycotask/mycotask.h"
+#include "mycomanager.h"
+#include "mycotask.h"
 
 // ======================= PROMISE =======================
 
@@ -40,7 +40,7 @@ private:
   }
 };
 
-// ======================= PROMISE для void =======================
+// ======================= PROMISE for void =======================
 template <> class MyPromise<void> {
 public:
   bool ready = false;
@@ -87,7 +87,7 @@ public:
   }
 };
 
-// ======================= FUTURE для void =======================
+// ======================= FUTURE for void =======================
 template <> class MyFuture<void> {
 public:
   MyPromise<void> *promise = nullptr;

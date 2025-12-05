@@ -3,7 +3,7 @@ Authors (team):
 Pavlosiuk Roman,
 Milian Bohdan,
 Shtohryn Oleg,
-Stetsiuk Kostantin
+Stetsiuk Kostiantyn
 
 ## Overview
 
@@ -138,3 +138,68 @@ mycomanager manager{std::move(task1), std::move(task2)};
 manager.append_task(std::move(task3));
 manager.run();
 ```
+
+# Future&Promise
+
+lightweight cooperative asynchronous model using custom
+MyPromise, MyFuture, myco_async, and a coroutine scheduler mycomanager.
+
+It provides async/await-like behavior, but is fully based on custom stackful coroutines (mycotask).
+
+### Creating an asynchronous task: `myco_async`
+`myco_async` takes a coroutine manager and a callable.
+It runs the callable inside a separate coroutine and returns a `MyFuture<T>`.
+
+```C++
+auto fut = myco_async(manager, []() -> int {
+    std::cout << "[producer] Start\n";
+    for (int i = 0; i < 3; i++) {
+        std::cout << "[producer] Working " << i << "\n";
+        mycotask::current_task()->yield();  // cooperative multitasking
+    }
+    std::cout << "[producer] Done\n";
+    return 777;
+});
+```
+
+### Waiting for the result: `future.get()`
+
+Calling future.get() suspends the current coroutine until the producer
+sets a value or exception on the promise.
+
+```C++
+myco_async(manager, [fut]() mutable {
+    std::cout << "[consumer] Start\n";
+    int result = fut.get();   // waits cooperatively
+    std::cout << "[consumer] Got result: " << result << "\n";
+    std::cout << "[consumer] Finish\n";
+});
+```
+### Running the coroutine scheduler
+
+`mycomanager` holds all active tasks.
+
+```C++
+mycomanager.run()
+```
+
+### Example for `std::string` return.
+```C++
+auto fut = myco_async(manager, []() -> std::string {
+    std::string msg;
+    for (int i = 0; i < 3; i++) {
+        msg += "chunk" + std::to_string(i) + " ";
+        mycotask::current_task()->yield();
+    }
+    return msg;
+});
+
+myco_async(manager, [fut]() mutable {
+    std::cout << "[string-consumer] Waiting...\n";
+    std::string s = fut.get();
+    std::cout << "[string-consumer] Received: " << s << "\n";
+});
+``` 
+
+
+### Complete examples you can find in `examples/` directory

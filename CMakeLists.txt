@@ -49,7 +49,7 @@ include_directories(src/libmycotask)
 
 #================================================================
 #! Project main executable source compilation
-add_executable(${PROJECT_NAME} myfp_main.cpp)
+add_executable(${PROJECT_NAME} main.cpp)
 
 target_link_libraries(${PROJECT_NAME} PRIVATE libcoro)
 if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
@@ -57,7 +57,7 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
 endif()
 
 #================================================================
-add_executable(${TEST_MY_COTASK} test_mycotask.cpp)
+add_executable(${TEST_MY_COTASK} examples/mycotask_test_example.cpp)
 
 target_link_libraries(${TEST_MY_COTASK} PRIVATE libcoro)
 if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
@@ -65,7 +65,7 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
 endif()
 #================================================================
 
-add_executable(${TEST_MYCOMANAGER} test_mycomanager.cpp)
+add_executable(${TEST_MYCOMANAGER} examples/mycomanager_test_example.cpp)
 
 target_link_libraries(${TEST_MYCOMANAGER} PRIVATE libcoro)
 if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
