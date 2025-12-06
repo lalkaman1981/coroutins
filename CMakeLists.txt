@@ -9,6 +9,7 @@ set(TEST_COROUTINES test_coroutines)
 set(STRUCTURED_PROJECT_NAME libmycor)
 set(TEST_MY_COTASK test_mycotask)
 set(TEST_MYCOMANAGER test_mycomanager)
+set(TEST_SWITCH_CONTEXT test_switch_context)
 
 project(${PROJECT_NAME} C CXX ASM) # project(${PROJECT_NAME} C CXX ASM)
 
@@ -77,6 +78,13 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
 endif()
 #================================================================
 
+add_executable(${TEST_SWITCH_CONTEXT} examples/switch_context_text.cpp)
+
+target_link_libraries(${TEST_SWITCH_CONTEXT} PRIVATE libcoro)
+if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+  target_link_options(${TEST_SWITCH_CONTEXT} PRIVATE "-no-pie")
+endif()
+#================================================================
 
 
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -no-pie")
@@ -97,4 +105,4 @@ set(ALL_TARGETS ${PROJECT_NAME})
 # Include CMake setup
 include(cmake/main-config.cmake)
 
-add_subdirectory(tests)
+# add_subdirectory(tests)

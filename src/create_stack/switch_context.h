@@ -4,8 +4,8 @@
 
 struct alignas(64) coro_context {
     uint64_t old_rsp;
-    unsigned char pad[56];          // 56 = 64 - sizeof(old_rsp)
-    unsigned char xsave_area[4096]; // now at offset 64
+    unsigned char pad[56];
+    unsigned char xsave_area[4096];
     char* stack_base;
     char* stack_top;
 };
