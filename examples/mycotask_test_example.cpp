@@ -23,18 +23,7 @@ void task_body(int a, int b, int &result) {
 
 int main() {
   int result = -69420;
-  //
-  // mycotask task = mycotask::create_task(task_body, 1, 2, std::ref(result));
-  //
-  // std::cout << "[Main] Task created\n";
-  //
-  // task.start();
-  // std::cout << "[Main] After first yield\n";
-  //
-  // task.resume();
-  // std::cout << "[Main] After second yield\n";
-  //
-  // std::cout << "RESULT: " << result << std::endl;
+
   mycotask t1 = mycotask::create_task(task_body, 1, 2, std::ref(result));
   auto t2 = mycotask::create_task([]() {
     std::cout << "[Task1] Started" << std::endl;
@@ -46,17 +35,8 @@ int main() {
     std::cout << "[Task1] Resumed3" << std::endl;
   });
 
-  // mycotask task = mycotask::create_task(task_body, 1, 2, std::ref(result));
-  //
-  // std::cout << "[Main] Task created\n";
-  //
-  // t3.start();
-  // std::cout << "[Main] After first yield\n";
-  //
-  // t3.resume();
-  // std::cout << "[Main] After second yield\n";
-  //
-  // std::cout << "RESULT: " << result << std::endl;
+  printf("=== TESTING MULTIPLE TASKS ===\n");
+
   t2.start();
   t1.start();
 

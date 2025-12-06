@@ -27,13 +27,21 @@ create_coro_stack:
     push r15
 
 #ifdef _WIN32
-    lea rax, [r9 + 16]
-    fxsave [rax]
+
+    push rax
+    push rdx
+    lea r13, [r9 + 64] 
+    mov eax, 7
+    xor edx, edx
+    xsave [r13]
+    pop rdx
+    pop rax
+
     mov QWORD PTR [r9 + 0], rsp
 
     mov r12, r9
 
-    mov rsp, [r8 + 536]
+    mov rsp, [r8 + 4168]
     and rsp, -16
     sub rsp, 32
 
@@ -46,16 +54,28 @@ create_coro_stack:
     mov r9, r12
 
     mov rsp, QWORD PTR [r9 + 0]
-    lea rax, [r9 + 16]
-    fxrstor [rax]
+    
+    lea r13, [r9 + 64]
+    mov eax, 7
+    xor edx, edx
+    xrstor [r13]
+
 #else
-    lea rax, [rcx + 16]
-    fxsave [rax]
+
+    push rax
+    push rdx
+    lea r13, [rcx + 64] 
+    mov eax, 7
+    xor edx, edx
+    xsave [r13]
+    pop rdx
+    pop rax
+
     mov QWORD PTR [rcx + 0], rsp
 
     mov r12, rcx
 
-    mov rsp, [rdx + 536]
+    mov rsp, [rdx + 4168]
     and rsp, -16
 
     mov rax, rdi            # rax = fn
@@ -67,8 +87,12 @@ create_coro_stack:
     mov rcx, r12
 
     mov rsp, QWORD PTR [rcx + 0]
-    lea rax, [rcx + 16]
-    fxrstor [rax]
+
+    lea r13, [rcx + 64]
+    mov eax, 7
+    xor edx, edx
+    xrstor [r13]
+
 #endif
 
     pop r15

@@ -1,10 +1,11 @@
 #pragma once
 #include <cstdint>
 
-struct alignas(16) coro_context {
+
+struct alignas(64) coro_context {
     uint64_t old_rsp;
-    uint64_t pad;
-    alignas(16) unsigned char fxsave_area[512];
+    unsigned char pad[56];          // 56 = 64 - sizeof(old_rsp)
+    unsigned char xsave_area[4096]; // now at offset 64
     char* stack_base;
     char* stack_top;
 };
