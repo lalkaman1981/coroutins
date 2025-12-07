@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include "mycotask.h"
+#include "../mycotask/mycotask.h"
 #include <boost/intrusive/circular_slist_algorithms.hpp>
 
 #ifndef COROUTINES_MYCOMANAGER_H

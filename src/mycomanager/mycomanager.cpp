@@ -2,7 +2,7 @@
 // Created by julfy on 11/14/25.
 //
 
-#include "../mycomanager.h"
+#include "mycomanager.h"
 
 mycotask mycomanager::default_task = mycotask();
 

@@ -1,5 +1,5 @@
-#include "coroutines.h"
-#include "mycotask.h"
+#include "../src/coroutines.h"
+#include "../src/mycotask/mycotask.h"
 #include <cstdint>
 #include <cstring>
 #include <iostream>

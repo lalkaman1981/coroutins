@@ -1,9 +1,5 @@
 cmake_minimum_required(VERSION 3.15)
 
-#! Check every comment after the "#!"
-
-#! CHANGE YOUR PROJECT NAME
-#  It is used as your project's main executable name.
 set(PROJECT_NAME coroutines)
 set(TEST_COROUTINES test_coroutines)
 set(STRUCTURED_PROJECT_NAME libmycor)
@@ -11,7 +7,7 @@ set(TEST_MY_COTASK test_mycotask)
 set(TEST_MYCOMANAGER test_mycomanager)
 set(TEST_SWITCH_CONTEXT test_switch_context)
 
-project(${PROJECT_NAME} C CXX ASM) # project(${PROJECT_NAME} C CXX ASM)
+project(${PROJECT_NAME} C CXX ASM)
 
 enable_language(ASM)
 
@@ -41,7 +37,6 @@ if (NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Release)
 endif ()
 
-# Warnings as errors should be imported here -- do not move this line
 include(cmake/CompilerWarnings.cmake)
 
 ##########################################################
@@ -49,11 +44,9 @@ include(cmake/CompilerWarnings.cmake)
 ##########################################################
 
 add_subdirectory(src)
-include_directories(src/libmycomanager)
-include_directories(src/libmycotask)
+include_directories(include)
 
 #================================================================
-#! Project main executable source compilation
 add_executable(${PROJECT_NAME} main.cpp)
 
 target_link_libraries(${PROJECT_NAME} PRIVATE libcoro)
@@ -96,13 +89,8 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-pie -no-pie")
 ##########################################################
 
 INSTALL(PROGRAMS
-  $<TARGET_FILE:${PROJECT_NAME}> # ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}
+  $<TARGET_FILE:${PROJECT_NAME}>
   DESTINATION bin)
-
-# Define ALL_TARGETS variable to use in PVS and Sanitizers
 set(ALL_TARGETS ${PROJECT_NAME})
-
-# Include CMake setup
 include(cmake/main-config.cmake)
-
 # add_subdirectory(tests)
