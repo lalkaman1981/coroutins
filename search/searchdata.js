@@ -8,8 +8,9 @@ var indexSectionsWithContent =
   5: "bcefilmnoprsvwx",
   6: "acmn",
   7: "m",
-  8: "acs",
-  9: "cp"
+  8: "as",
+  9: "acst",
+  10: "cp"
 };
 
 var indexSectionNames =
@@ -23,7 +24,8 @@ var indexSectionNames =
   6: "typedefs",
   7: "related",
   8: "defines",
-  9: "pages"
+  9: "groups",
+  10: "pages"
 };
 
 var indexSectionLabels =
@@ -37,6 +39,7 @@ var indexSectionLabels =
   6: "Typedefs",
   7: "Friends",
   8: "Macros",
-  9: "Pages"
+  9: "Modules",
+  10: "Pages"
 };
 

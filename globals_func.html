@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -47,6 +51,22 @@ $(function() {
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('globals_func.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -84,12 +104,12 @@ $(function() {
 
 
 <h3><a id="index_c" name="index_c"></a>- c -</h3><ul>
-<li>call_coro()&#160;:&#160;<a class="el" href="coroutines_8h.html#a5219c42d490f2fc2038fa31db366bc39">coroutines.h</a></li>
-<li>call_fn()&#160;:&#160;<a class="el" href="coroutines_8h.html#a71369f2943e58cfb121fdb59553096f9">coroutines.h</a>, <a class="el" href="create__stack_8cpp.html#a71369f2943e58cfb121fdb59553096f9">create_stack.cpp</a></li>
-<li>create_coro_context()&#160;:&#160;<a class="el" href="coroutines_8h.html#a78e60324fc41e6863dbe9b69f22784ca">coroutines.h</a>, <a class="el" href="create__stack_8cpp.html#a78e60324fc41e6863dbe9b69f22784ca">create_stack.cpp</a></li>
-<li>create_coro_stack()&#160;:&#160;<a class="el" href="coroutines_8h.html#ad463545ef80d2d077f57208dc210b87e">coroutines.h</a></li>
-<li>create_world_context()&#160;:&#160;<a class="el" href="coroutines_8h.html#a0861d4102759691602d2850e2390eb8f">coroutines.h</a></li>
-<li>create_world_context_s()&#160;:&#160;<a class="el" href="coroutines_8h.html#a780594ffab4edf080ee1809004a05dc3">coroutines.h</a></li>
+<li>call_coro()&#160;:&#160;<a class="el" href="group__core.html#ga5219c42d490f2fc2038fa31db366bc39">coroutines.h</a></li>
+<li>call_fn()&#160;:&#160;<a class="el" href="group__core.html#ga71369f2943e58cfb121fdb59553096f9">coroutines.h</a>, <a class="el" href="group__core.html#ga71369f2943e58cfb121fdb59553096f9">create_stack.cpp</a></li>
+<li>create_coro_context()&#160;:&#160;<a class="el" href="group__core.html#ga78e60324fc41e6863dbe9b69f22784ca">coroutines.h</a>, <a class="el" href="group__core.html#ga78e60324fc41e6863dbe9b69f22784ca">create_stack.cpp</a></li>
+<li>create_coro_stack()&#160;:&#160;<a class="el" href="group__core.html#gad463545ef80d2d077f57208dc210b87e">coroutines.h</a></li>
+<li>create_world_context()&#160;:&#160;<a class="el" href="group__core.html#ga0861d4102759691602d2850e2390eb8f">coroutines.h</a></li>
+<li>create_world_context_s()&#160;:&#160;<a class="el" href="group__core.html#ga780594ffab4edf080ee1809004a05dc3">coroutines.h</a></li>
 </ul>
 
 
@@ -123,7 +143,7 @@ $(function() {
 
 <h3><a id="index_m" name="index_m"></a>- m -</h3><ul>
 <li>main()&#160;:&#160;<a class="el" href="mycomanager__test__example_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">mycomanager_test_example.cpp</a>, <a class="el" href="mycotask__test__example_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">mycotask_test_example.cpp</a>, <a class="el" href="myfp__int__example_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">myfp_int_example.cpp</a>, <a class="el" href="myfp__string__example_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">myfp_string_example.cpp</a>, <a class="el" href="switch__context__text_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">switch_context_text.cpp</a>, <a class="el" href="test__asm_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">test_asm.cpp</a>, <a class="el" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main.cpp</a>, <a class="el" href="benchmark__mycomanager_2compare__vs__libcopp_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">compare_vs_libcopp.cpp</a>, <a class="el" href="unit__test__mycotask_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">unit_test_mycotask.cpp</a></li>
-<li>myco_async()&#160;:&#160;<a class="el" href="myfp_8h.html#a618cff0e4d3e4af24324e58078690cb9">myfp.h</a></li>
+<li>myco_async()&#160;:&#160;<a class="el" href="group__async.html#ga618cff0e4d3e4af24324e58078690cb9">myfp.h</a></li>
 <li>myco_empty_worker()&#160;:&#160;<a class="el" href="benchmark__mycomanager_2compare__vs__libcopp_8cpp.html#a70420edfa954ebb56d8d800abf1ea5e3">compare_vs_libcopp.cpp</a></li>
 <li>myco_sched_worker()&#160;:&#160;<a class="el" href="benchmark__mycomanager_2compare__vs__libcopp_8cpp.html#adce1a34014f2454c7295226da083261c">compare_vs_libcopp.cpp</a></li>
 <li>myco_worker()&#160;:&#160;<a class="el" href="benchmark__mycotask_2compare__vs__libcopp_8cpp.html#af8a418e29345dcf048c027f9ffd1ea5f">compare_vs_libcopp.cpp</a></li>
@@ -158,9 +178,12 @@ $(function() {
 <li>test_args_and_ref()&#160;:&#160;<a class="el" href="unit__test__mycotask_8cpp.html#aa8aef88861230b14d7b4247616d68718">unit_test_mycotask.cpp</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

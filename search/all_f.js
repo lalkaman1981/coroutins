@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['scheduler_0',['Running the coroutine scheduler',['../md_readme.html#autotoc_md13',1,'']]],
+  ['scheduler_0',['scheduler',['../index.html#autotoc_md13',1,'Running the coroutine scheduler'],['../group__scheduler.html',1,'Scheduler']]],
   ['scheduling_5ftasks_1',['SCHEDULING_TASKS',['../benchmark__mycomanager_2compare__vs__libcopp_8cpp.html#a32623cb776a65089cad967ac723e1675',1,'compare_vs_libcopp.cpp']]],
   ['scheduling_5fyields_2',['SCHEDULING_YIELDS',['../benchmark__mycomanager_2compare__vs__libcopp_8cpp.html#ac57ca5ec2f021f5370e725de474842d0',1,'compare_vs_libcopp.cpp']]],
   ['script_5fdir_3',['SCRIPT_DIR',['../namespacerun__comparison__and__plot__results.html#a9f4c69b9733f1afc4bab64a78bd8efe8',1,'run_comparison_and_plot_results']]],
@@ -12,7 +12,7 @@ var searchData=
   ['stack_5fsize_9',['STACK_SIZE',['../create__stack_8cpp.html#a6423a880df59733d2d9b509c7718d3a9',1,'create_stack.cpp']]],
   ['stack_5ftop_10',['stack_top',['../structcoro__context.html#aab577b43eb2662aa85bbcea73b660a63',1,'coro_context']]],
   ['start_11',['start',['../classmycotask.html#ab5f59db09fd4238bd12d4c2dd8fad320',1,'mycotask']]],
-  ['std_3a_3astring_20tt_20return_12',['Example for &lt;tt&gt;std::string&lt;/tt&gt; return.',['../md_readme.html#autotoc_md14',1,'']]],
+  ['std_3a_3astring_20tt_20return_12',['Example for &lt;tt&gt;std::string&lt;/tt&gt; return.',['../index.html#autotoc_md14',1,'']]],
   ['switch_5fcontext_13',['switch_context',['../switch__context_8h.html#a29310cf769f28869cffa0632a95e07d6',1,'switch_context.h']]],
   ['switch_5fcontext_2eh_14',['switch_context.h',['../switch__context_8h.html',1,'']]],
   ['switch_5fcontext_5ftext_2ecpp_15',['switch_context_text.cpp',['../switch__context__text_8cpp.html',1,'']]]

@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -46,6 +50,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('myfp_8h.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -67,11 +88,6 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_051ed13fec42cd3b8445964d1414af1d.html">my_fp</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
@@ -118,74 +134,22 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a618cff0e4d3e4af24324e58078690cb9" id="r_a618cff0e4d3e4af24324e58078690cb9"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="classMyPromise.html">typename</a> <a class="el" href="classMyPromise.html">F</a> &gt; </td></tr>
-<tr class="memitem:a618cff0e4d3e4af24324e58078690cb9"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classMyPromise.html">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="myfp_8h.html#a618cff0e4d3e4af24324e58078690cb9">myco_async</a> (<a class="el" href="classmycomanager.html">mycomanager</a> &amp;<a class="el" href="switch__context__text_8cpp.html#aba61e1dfec0ddb9597ca94bdd6c3691a">manager</a>, <a class="el" href="classMyPromise.html">F</a> &amp;&amp;<a class="el" href="classMyPromise.html">func</a>)</td></tr>
-<tr class="memdesc:a618cff0e4d3e4af24324e58078690cb9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Launch asynchronous coroutine task.  <br /></td></tr>
-<tr class="separator:a618cff0e4d3e4af24324e58078690cb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga618cff0e4d3e4af24324e58078690cb9" id="r_ga618cff0e4d3e4af24324e58078690cb9"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="classMyPromise.html">typename</a> <a class="el" href="classMyPromise.html">F</a> &gt; </td></tr>
+<tr class="memitem:ga618cff0e4d3e4af24324e58078690cb9"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classMyPromise.html">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__async.html#ga618cff0e4d3e4af24324e58078690cb9">myco_async</a> (<a class="el" href="classmycomanager.html">mycomanager</a> &amp;<a class="el" href="switch__context__text_8cpp.html#aba61e1dfec0ddb9597ca94bdd6c3691a">manager</a>, <a class="el" href="classMyPromise.html">F</a> &amp;&amp;<a class="el" href="classMyPromise.html">func</a>)</td></tr>
+<tr class="memdesc:ga618cff0e4d3e4af24324e58078690cb9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Launch asynchronous coroutine task.  <br /></td></tr>
+<tr class="separator:ga618cff0e4d3e4af24324e58078690cb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Promise/Future pattern implementation for coroutines. </p>
 <p>Provides asynchronous result handling through Promise and Future objects, allowing coroutines to wait for values produced by other coroutines. </p>
-</div><h2 class="groupheader">Function Documentation</h2>
-<a id="a618cff0e4d3e4af24324e58078690cb9" name="a618cff0e4d3e4af24324e58078690cb9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a618cff0e4d3e4af24324e58078690cb9">&#9670;&#160;</a></span>myco_async()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="classMyPromise.html">typename</a> <a class="el" href="classMyPromise.html">F</a> &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classMyPromise.html">auto</a> myco_async </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classmycomanager.html">mycomanager</a> &amp;&#160;</td>
-          <td class="paramname"><em>manager</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classMyPromise.html">F</a> &amp;&amp;&#160;</td>
-          <td class="paramname"><em>func</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Launch asynchronous coroutine task. </p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">F</td><td>Callable type </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">manager</td><td>Coroutine manager to schedule task </td></tr>
-    <tr><td class="paramname">func</td><td>Function to execute asynchronously </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classMyFuture.html" title="Consumer side of promise-future pair.">MyFuture</a> for retrieving result</dd></dl>
-<p>Creates a new coroutine task that executes the provided function and stores the result in a promise. Returns a future that can be used to wait for and retrieve the result.</p>
-<p>Handles both void and non-void return types through template specialization. Exceptions are captured and propagated through the promise-future mechanism.</p>
-<div class="fragment"><div class="line"><a class="code hl_class" href="classmycomanager.html">mycomanager</a> <a class="code hl_class" href="classMyPromise.html">mgr</a>;</div>
-<div class="line"><span class="keyword">auto</span> <a class="code hl_class" href="classMyPromise.html">future</a> = <a class="code hl_function" href="myfp_8h.html#a618cff0e4d3e4af24324e58078690cb9">myco_async</a>(<a class="code hl_class" href="classMyPromise.html">mgr</a>, []() { <span class="keywordflow">return</span> 42; });</div>
-<div class="line"><a class="code hl_class" href="classMyPromise.html">mgr</a>.run();</div>
-<div class="line"><span class="keywordtype">int</span> <a class="code hl_class" href="classMyPromise.html">result</a> = <a class="code hl_class" href="classMyPromise.html">future</a>.get();</div>
-<div class="ttc" id="aclassMyPromise_html"><div class="ttname"><a href="classMyPromise.html">MyPromise</a></div><div class="ttdoc">Producer side of promise-future pair.</div><div class="ttdef"><b>Definition</b> myfp.h:27</div></div>
-<div class="ttc" id="aclassmycomanager_html"><div class="ttname"><a href="classmycomanager.html">mycomanager</a></div><div class="ttdoc">Round-robin scheduler for cooperative multitasking.</div><div class="ttdef"><b>Definition</b> mycomanager.h:42</div></div>
-<div class="ttc" id="amyfp_8h_html_a618cff0e4d3e4af24324e58078690cb9"><div class="ttname"><a href="myfp_8h.html#a618cff0e4d3e4af24324e58078690cb9">myco_async</a></div><div class="ttdeci">auto myco_async(mycomanager &amp;manager, F &amp;&amp;func)</div><div class="ttdoc">Launch asynchronous coroutine task.</div><div class="ttdef"><b>Definition</b> myfp.h:184</div></div>
-</div><!-- fragment --> 
-</div>
-</div>
-</div><!-- contents -->
+</div></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_051ed13fec42cd3b8445964d1414af1d.html">my_fp</a></li><li class="navelem"><a class="el" href="myfp_8h.html">myfp.h</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

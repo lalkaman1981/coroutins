@@ -5,10 +5,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Stackful Coroutines: Main Page</title>
+<title>Stackful Coroutines: Course project: Coroutines</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -47,6 +51,22 @@ $(function() {
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('index.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -68,14 +88,196 @@ $(function() {
 </div>
 </div>
 
-<div class="header">
-  <div class="headertitle"><div class="title">Stackful Coroutines Documentation</div></div>
+<div><div class="header">
+  <div class="headertitle"><div class="title">Course project: Coroutines </div></div>
 </div><!--header-->
 <div class="contents">
+<div class="textblock"><p><a class="anchor" id="md_readme"></a>Authors (team): Pavlosiuk Roman, Milian Bohdan, Shtohryn Oleg, Stetsiuk Kostiantyn</p>
+<h1><a class="anchor" id="autotoc_md1"></a>
+Overview</h1>
+<p>This project implements a <b>custom coroutine library in C++</b>, consisting of two major components:</p>
+<ul>
+<li>**<code>mycotask</code>** — a lightweight wrapper around a manually–implemented coroutine context. <br  />
+ It supports:<ul>
+<li>creating tasks from functions or lambdas,</li>
+<li>yielding/resuming execution,</li>
+<li>passing arguments by value and reference.</li>
+</ul>
+</li>
+<li>**<code>mycomanager</code>** — a scheduler that stores multiple <code>mycotask</code> objects and executes them cooperatively in a round-robin fashion.</li>
+</ul>
+<p>The implementation is based on <b>manual stack/context switching</b> using <a class="el" href="classMyPromise.html#adaac1ee386a9895ea1e4234042d5d37d" title="Construct promise with manager.">Boost.Context</a>, linked as part of <code>libcoro</code>.</p>
+<h1><a class="anchor" id="autotoc_md2"></a>
+Prerequisites</h1>
+<p>To build and run the project, you need:</p>
+<ul>
+<li><b>C++20 compiler</b><ul>
+<li>GCC ≥ 11</li>
+<li>Clang ≥ 14</li>
+</ul>
+</li>
+<li><b>Boost</b> (boost-context, boost-intrusive)</li>
+<li><b>CMake ≥ <a class="el" href="classMyPromise.html#adaac1ee386a9895ea1e4234042d5d37d" title="Construct promise with manager.">3.15</a></b></li>
+<li><b>Linux</b> (x86-64) recommended <br  />
+ (due to assembly-based context switching)</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md3"></a>
+Compilation</h1>
+<p>Use the main CMake target:</p>
+<div class="fragment"><div class="line">mkdir build</div>
+<div class="line">cd build</div>
+<div class="line">cmake ..</div>
+<div class="line">make libcoro</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md4"></a>
+Installation</h2>
+<p>boost, cmake</p>
+<h1><a class="anchor" id="autotoc_md5"></a>
+Usage</h1>
+<p>The library exposes two key components:</p>
+<h2><a class="anchor" id="autotoc_md6"></a>
+&lt;tt&gt;mycotask&lt;/tt&gt;</h2>
+<p>Represents a single resumable coroutine.</p>
+<p><b>Basic API:</b></p>
+<div class="fragment"><div class="line"> ++</div>
+<div class="line"><a class="code hl_class" href="classmycotask.html">mycotask</a> <a class="code hl_class" href="classMyPromise.html">t</a> = <a class="code hl_function" href="classmycotask.html#a127b31a745da8183492a835594b2b3f4">mycotask::create_task</a>(<a class="code hl_class" href="classMyPromise.html">function_or_lambda</a>, <a class="code hl_class" href="classMyPromise.html">args</a>...);</div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_class" href="classMyPromise.html">t</a>.start();   <span class="comment">// first run</span></div>
+<div class="line"><a class="code hl_class" href="classMyPromise.html">t</a>.resume();  <span class="comment">// resume after yielding</span></div>
+<div class="ttc" id="aclassMyPromise_html"><div class="ttname"><a href="classMyPromise.html">MyPromise</a></div><div class="ttdoc">Producer side of promise-future pair.</div><div class="ttdef"><b>Definition</b> myfp.h:31</div></div>
+<div class="ttc" id="aclassmycotask_html"><div class="ttname"><a href="classmycotask.html">mycotask</a></div><div class="ttdoc">Stackful coroutine with independent execution context.</div><div class="ttdef"><b>Definition</b> mycotask.h:36</div></div>
+<div class="ttc" id="aclassmycotask_html_a127b31a745da8183492a835594b2b3f4"><div class="ttname"><a href="classmycotask.html#a127b31a745da8183492a835594b2b3f4">mycotask::create_task</a></div><div class="ttdeci">static mycotask create_task(F &amp;&amp;f, Args &amp;&amp;... args)</div><div class="ttdoc">Create a new coroutine task.</div><div class="ttdef"><b>Definition</b> mycotask.h:109</div></div>
+</div><!-- fragment --><p>Each task may call:</p>
+<div class="fragment"><div class="line"> ++</div>
+<div class="line"><a class="code hl_function" href="classmycotask.html#aeeda990a32e7faefb9095adb7c9623a9">mycotask::current_task</a>()-&gt;yield();</div>
+<div class="ttc" id="aclassmycotask_html_aeeda990a32e7faefb9095adb7c9623a9"><div class="ttname"><a href="classmycotask.html#aeeda990a32e7faefb9095adb7c9623a9">mycotask::current_task</a></div><div class="ttdeci">static mycotask * current_task()</div><div class="ttdoc">Get currently executing coroutine.</div><div class="ttdef"><b>Definition</b> mycotask.cpp:111</div></div>
+</div><!-- fragment --><p> to yield control back to the caller.</p>
+<h2><a class="anchor" id="autotoc_md7"></a>
+Example: Using &lt;tt&gt;mycotask&lt;/tt&gt;</h2>
+<div class="fragment"><div class="line"> ++</div>
+<div class="line"><span class="keywordtype">void</span> <a class="code hl_function" href="mycomanager__test__example_8cpp.html#afbae0e733e763fc3d7dccd03501ea69f">task_body</a>(<span class="keywordtype">int</span> <a class="code hl_class" href="classMyPromise.html">a</a>, <span class="keywordtype">int</span> <a class="code hl_class" href="classMyPromise.html">b</a>, <span class="keywordtype">int</span>&amp; <a class="code hl_class" href="classMyPromise.html">result</a>) {</div>
+<div class="line">    <a class="code hl_function" href="classMyPromise.html#adaac1ee386a9895ea1e4234042d5d37d">std::cout</a> &lt;&lt; <span class="stringliteral">&quot;[Task] Start a=&quot;</span> &lt;&lt; <a class="code hl_class" href="classMyPromise.html">a</a> &lt;&lt; <span class="stringliteral">&quot; b=&quot;</span> &lt;&lt; <a class="code hl_class" href="classMyPromise.html">b</a> &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line">    <a class="code hl_function" href="classmycotask.html#aeeda990a32e7faefb9095adb7c9623a9">mycotask::current_task</a>()-&gt;yield();</div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_function" href="classMyPromise.html#adaac1ee386a9895ea1e4234042d5d37d">std::cout</a> &lt;&lt; <span class="stringliteral">&quot;[Task] Resume1\n&quot;</span>;</div>
+<div class="line">    <a class="code hl_function" href="classmycotask.html#aeeda990a32e7faefb9095adb7c9623a9">mycotask::current_task</a>()-&gt;yield();</div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_function" href="classMyPromise.html#adaac1ee386a9895ea1e4234042d5d37d">std::cout</a> &lt;&lt; <span class="stringliteral">&quot;[Task] Resume2\n&quot;</span>;</div>
+<div class="line">    <a class="code hl_function" href="classmycotask.html#aeeda990a32e7faefb9095adb7c9623a9">mycotask::current_task</a>()-&gt;yield();</div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_class" href="classMyPromise.html">result</a> = <a class="code hl_class" href="classMyPromise.html">a</a> + <a class="code hl_class" href="classMyPromise.html">b</a>;</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> <a class="code hl_function" href="mycomanager__test__example_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a>() {</div>
+<div class="line">    <span class="keywordtype">int</span> <a class="code hl_class" href="classMyPromise.html">result</a> = -69420;</div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_class" href="classmycotask.html">mycotask</a> <a class="code hl_class" href="classMyPromise.html">t1</a> = <a class="code hl_function" href="classmycotask.html#a127b31a745da8183492a835594b2b3f4">mycotask::create_task</a>(<a class="code hl_function" href="mycomanager__test__example_8cpp.html#afbae0e733e763fc3d7dccd03501ea69f">task_body</a>, 1, 2, <a class="code hl_function" href="classMyPromise.html#adaac1ee386a9895ea1e4234042d5d37d">std::ref</a>(<a class="code hl_class" href="classMyPromise.html">result</a>));</div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_class" href="classMyPromise.html">t1</a>.start();</div>
+<div class="line">    <a class="code hl_class" href="classMyPromise.html">t1</a>.resume();</div>
+<div class="line">    <a class="code hl_class" href="classMyPromise.html">t1</a>.resume();</div>
+<div class="line">    <a class="code hl_class" href="classMyPromise.html">t1</a>.resume();</div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_function" href="classMyPromise.html#adaac1ee386a9895ea1e4234042d5d37d">std::cout</a> &lt;&lt; <span class="stringliteral">&quot;RESULT: &quot;</span> &lt;&lt; <a class="code hl_class" href="classMyPromise.html">result</a> &lt;&lt; <a class="code hl_function" href="classMyPromise.html#adaac1ee386a9895ea1e4234042d5d37d">std::endl</a>;</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassMyPromise_html_adaac1ee386a9895ea1e4234042d5d37d"><div class="ttname"><a href="classMyPromise.html#adaac1ee386a9895ea1e4234042d5d37d">MyPromise::MyPromise</a></div><div class="ttdeci">MyPromise(mycomanager *mgr)</div><div class="ttdoc">Construct promise with manager.</div><div class="ttdef"><b>Definition</b> myfp.h:43</div></div>
+<div class="ttc" id="amycomanager__test__example_8cpp_html_ae66f6b31b5ad750f1fe042a706a4e3d4"><div class="ttname"><a href="mycomanager__test__example_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a></div><div class="ttdeci">int main()</div><div class="ttdef"><b>Definition</b> mycomanager_test_example.cpp:23</div></div>
+<div class="ttc" id="amycomanager__test__example_8cpp_html_afbae0e733e763fc3d7dccd03501ea69f"><div class="ttname"><a href="mycomanager__test__example_8cpp.html#afbae0e733e763fc3d7dccd03501ea69f">task_body</a></div><div class="ttdeci">void task_body(int a, int b, int &amp;result)</div><div class="ttdef"><b>Definition</b> mycomanager_test_example.cpp:9</div></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md8"></a>
+&lt;tt&gt;mycomanager&lt;/tt&gt;</h2>
+<p>A round-robin scheduler that stores multiple tasks:</p>
+<div class="fragment"><div class="line"> ++</div>
+<div class="line"><a class="code hl_class" href="classmycomanager.html">mycomanager</a> <a class="code hl_variable" href="switch__context__text_8cpp.html#aba61e1dfec0ddb9597ca94bdd6c3691a">manager</a>{<a class="code hl_function" href="classMyPromise.html#adaac1ee386a9895ea1e4234042d5d37d">std::move</a>(<a class="code hl_class" href="classMyPromise.html">task1</a>), <a class="code hl_function" href="classMyPromise.html#adaac1ee386a9895ea1e4234042d5d37d">std::move</a>(<a class="code hl_class" href="classMyPromise.html">task2</a>)};</div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_variable" href="switch__context__text_8cpp.html#aba61e1dfec0ddb9597ca94bdd6c3691a">manager</a>.<a class="code hl_function" href="classmycomanager.html#abb86cf1ab5a9e47f19baa2f58bb9594c">append_task</a>(<a class="code hl_function" href="classMyPromise.html#adaac1ee386a9895ea1e4234042d5d37d">std::move</a>(<a class="code hl_class" href="classMyPromise.html">task3</a>));</div>
+<div class="line"><a class="code hl_variable" href="switch__context__text_8cpp.html#aba61e1dfec0ddb9597ca94bdd6c3691a">manager</a>.run();   <span class="comment">// runs until all tasks finish</span></div>
+<div class="ttc" id="aclassmycomanager_html"><div class="ttname"><a href="classmycomanager.html">mycomanager</a></div><div class="ttdoc">Round-robin scheduler for cooperative multitasking.</div><div class="ttdef"><b>Definition</b> mycomanager.h:46</div></div>
+<div class="ttc" id="aclassmycomanager_html_abb86cf1ab5a9e47f19baa2f58bb9594c"><div class="ttname"><a href="classmycomanager.html#abb86cf1ab5a9e47f19baa2f58bb9594c">mycomanager::append_task</a></div><div class="ttdeci">void append_task(mycotask &amp;&amp;task)</div><div class="ttdoc">Add a new task to the scheduler.</div><div class="ttdef"><b>Definition</b> mycomanager.cpp:20</div></div>
+<div class="ttc" id="aswitch__context__text_8cpp_html_aba61e1dfec0ddb9597ca94bdd6c3691a"><div class="ttname"><a href="switch__context__text_8cpp.html#aba61e1dfec0ddb9597ca94bdd6c3691a">manager</a></div><div class="ttdeci">std::vector&lt; coro_context * &gt; manager</div><div class="ttdef"><b>Definition</b> switch_context_text.cpp:3</div></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md9"></a>
+Example: Using &lt;tt&gt;mycomanager&lt;/tt&gt;</h2>
+<div class="fragment"><div class="line"> ++</div>
+<div class="line"><span class="keyword">auto</span> <a class="code hl_class" href="classMyPromise.html">task1</a> = <a class="code hl_function" href="classmycotask.html#a127b31a745da8183492a835594b2b3f4">mycotask::create_task</a>([](){</div>
+<div class="line">    <a class="code hl_function" href="classMyPromise.html#adaac1ee386a9895ea1e4234042d5d37d">std::cout</a> &lt;&lt; <span class="stringliteral">&quot;[Task1] Started\n&quot;</span>;</div>
+<div class="line">    <a class="code hl_function" href="classmycotask.html#aeeda990a32e7faefb9095adb7c9623a9">mycotask::current_task</a>()-&gt;yield();</div>
+<div class="line">    <a class="code hl_function" href="classMyPromise.html#adaac1ee386a9895ea1e4234042d5d37d">std::cout</a> &lt;&lt; <span class="stringliteral">&quot;[Task1] Resumed1\n&quot;</span>;</div>
+<div class="line">    <a class="code hl_function" href="classmycotask.html#aeeda990a32e7faefb9095adb7c9623a9">mycotask::current_task</a>()-&gt;yield();</div>
+<div class="line">    <a class="code hl_function" href="classMyPromise.html#adaac1ee386a9895ea1e4234042d5d37d">std::cout</a> &lt;&lt; <span class="stringliteral">&quot;[Task1] Resumed2\n&quot;</span>;</div>
+<div class="line">});</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">auto</span> <a class="code hl_class" href="classMyPromise.html">task2</a> = <a class="code hl_function" href="classmycotask.html#a127b31a745da8183492a835594b2b3f4">mycotask::create_task</a>([](){</div>
+<div class="line">    <a class="code hl_function" href="classMyPromise.html#adaac1ee386a9895ea1e4234042d5d37d">std::cout</a> &lt;&lt; <span class="stringliteral">&quot;[Task2] Started\n&quot;</span>;</div>
+<div class="line">    <a class="code hl_function" href="classmycotask.html#aeeda990a32e7faefb9095adb7c9623a9">mycotask::current_task</a>()-&gt;yield();</div>
+<div class="line">    <a class="code hl_function" href="classMyPromise.html#adaac1ee386a9895ea1e4234042d5d37d">std::cout</a> &lt;&lt; <span class="stringliteral">&quot;[Task2] Resumed\n&quot;</span>;</div>
+<div class="line">});</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">auto</span> <a class="code hl_class" href="classMyPromise.html">task3</a> = <a class="code hl_function" href="classmycotask.html#a127b31a745da8183492a835594b2b3f4">mycotask::create_task</a>([](){</div>
+<div class="line">    <a class="code hl_function" href="classMyPromise.html#adaac1ee386a9895ea1e4234042d5d37d">std::cout</a> &lt;&lt; <span class="stringliteral">&quot;[Task3] Started and Finished!\n&quot;</span>;</div>
+<div class="line">});</div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_class" href="classmycomanager.html">mycomanager</a> <a class="code hl_variable" href="switch__context__text_8cpp.html#aba61e1dfec0ddb9597ca94bdd6c3691a">manager</a>{<a class="code hl_function" href="classMyPromise.html#adaac1ee386a9895ea1e4234042d5d37d">std::move</a>(<a class="code hl_class" href="classMyPromise.html">task1</a>), <a class="code hl_function" href="classMyPromise.html#adaac1ee386a9895ea1e4234042d5d37d">std::move</a>(<a class="code hl_class" href="classMyPromise.html">task2</a>)};</div>
+<div class="line"><a class="code hl_variable" href="switch__context__text_8cpp.html#aba61e1dfec0ddb9597ca94bdd6c3691a">manager</a>.<a class="code hl_function" href="classmycomanager.html#abb86cf1ab5a9e47f19baa2f58bb9594c">append_task</a>(<a class="code hl_function" href="classMyPromise.html#adaac1ee386a9895ea1e4234042d5d37d">std::move</a>(<a class="code hl_class" href="classMyPromise.html">task3</a>));</div>
+<div class="line"><a class="code hl_variable" href="switch__context__text_8cpp.html#aba61e1dfec0ddb9597ca94bdd6c3691a">manager</a>.run();</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md10"></a>
+Future&amp;Promise</h1>
+<p>lightweight cooperative asynchronous model using custom <a class="el" href="classMyPromise.html" title="Producer side of promise-future pair.">MyPromise</a>, <a class="el" href="classMyFuture.html" title="Consumer side of promise-future pair.">MyFuture</a>, myco_async, and a coroutine scheduler mycomanager.</p>
+<p>It provides async/await-like behavior, but is fully based on custom stackful coroutines (mycotask).</p>
+<h3><a class="anchor" id="autotoc_md11"></a>
+Creating an asynchronous task: &lt;tt&gt;myco_async&lt;/tt&gt;</h3>
+<p><code>myco_async</code> takes a coroutine manager and a callable. It runs the callable inside a separate coroutine and returns a <code><a class="el" href="classMyFuture.html" title="Consumer side of promise-future pair.">MyFuture</a>&lt;T&gt;</code>.</p>
+<div class="fragment"><div class="line"> ++</div>
+<div class="line"><span class="keyword">auto</span> <a class="code hl_class" href="classMyPromise.html">fut</a> = <a class="code hl_function" href="group__async.html#ga618cff0e4d3e4af24324e58078690cb9">myco_async</a>(<a class="code hl_variable" href="switch__context__text_8cpp.html#aba61e1dfec0ddb9597ca94bdd6c3691a">manager</a>, []() -&gt; <span class="keywordtype">int</span> {</div>
+<div class="line">    <a class="code hl_function" href="classMyPromise.html#adaac1ee386a9895ea1e4234042d5d37d">std::cout</a> &lt;&lt; <span class="stringliteral">&quot;[producer] Start\n&quot;</span>;</div>
+<div class="line">    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code hl_class" href="classMyPromise.html">i</a> = 0; <a class="code hl_class" href="classMyPromise.html">i</a> &lt; 3; <a class="code hl_class" href="classMyPromise.html">i</a>++) {</div>
+<div class="line">        <a class="code hl_function" href="classMyPromise.html#adaac1ee386a9895ea1e4234042d5d37d">std::cout</a> &lt;&lt; <span class="stringliteral">&quot;[producer] Working &quot;</span> &lt;&lt; <a class="code hl_class" href="classMyPromise.html">i</a> &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line">        <a class="code hl_function" href="classmycotask.html#aeeda990a32e7faefb9095adb7c9623a9">mycotask::current_task</a>()-&gt;yield();  <span class="comment">// cooperative multitasking</span></div>
+<div class="line">    }</div>
+<div class="line">    <a class="code hl_function" href="classMyPromise.html#adaac1ee386a9895ea1e4234042d5d37d">std::cout</a> &lt;&lt; <span class="stringliteral">&quot;[producer] Done\n&quot;</span>;</div>
+<div class="line">    <span class="keywordflow">return</span> 777;</div>
+<div class="line">});</div>
+<div class="ttc" id="agroup__async_html_ga618cff0e4d3e4af24324e58078690cb9"><div class="ttname"><a href="group__async.html#ga618cff0e4d3e4af24324e58078690cb9">myco_async</a></div><div class="ttdeci">auto myco_async(mycomanager &amp;manager, F &amp;&amp;func)</div><div class="ttdoc">Launch asynchronous coroutine task.</div><div class="ttdef"><b>Definition</b> myfp.h:188</div></div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md12"></a>
+Waiting for the result: &lt;tt&gt;future.get()&lt;/tt&gt;</h3>
+<p>Calling future.get() suspends the current coroutine until the producer sets a value or exception on the promise.</p>
+<div class="fragment"><div class="line"> ++</div>
+<div class="line"><a class="code hl_function" href="group__async.html#ga618cff0e4d3e4af24324e58078690cb9">myco_async</a>(<a class="code hl_variable" href="switch__context__text_8cpp.html#aba61e1dfec0ddb9597ca94bdd6c3691a">manager</a>, [<a class="code hl_class" href="classMyPromise.html">fut</a>]() <span class="keyword">mutable</span> {</div>
+<div class="line">    <a class="code hl_function" href="classMyPromise.html#adaac1ee386a9895ea1e4234042d5d37d">std::cout</a> &lt;&lt; <span class="stringliteral">&quot;[consumer] Start\n&quot;</span>;</div>
+<div class="line">    <span class="keywordtype">int</span> <a class="code hl_class" href="classMyPromise.html">result</a> = <a class="code hl_class" href="classMyPromise.html">fut</a>.get();   <span class="comment">// waits cooperatively</span></div>
+<div class="line">    <a class="code hl_function" href="classMyPromise.html#adaac1ee386a9895ea1e4234042d5d37d">std::cout</a> &lt;&lt; <span class="stringliteral">&quot;[consumer] Got result: &quot;</span> &lt;&lt; <a class="code hl_class" href="classMyPromise.html">result</a> &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line">    <a class="code hl_function" href="classMyPromise.html#adaac1ee386a9895ea1e4234042d5d37d">std::cout</a> &lt;&lt; <span class="stringliteral">&quot;[consumer] Finish\n&quot;</span>;</div>
+<div class="line">});</div>
+</div><!-- fragment --> <h3><a class="anchor" id="autotoc_md13"></a>
+Running the coroutine scheduler</h3>
+<p><code>mycomanager</code> holds all active tasks.</p>
+<div class="fragment"><div class="line"> ++</div>
+<div class="line"><a class="code hl_class" href="classmycomanager.html">mycomanager</a>.<a class="code hl_function" href="classmycomanager.html#ae93a4a3aa93b5da14c9fde8acab3ed24">run</a>()</div>
+<div class="ttc" id="aclassmycomanager_html_ae93a4a3aa93b5da14c9fde8acab3ed24"><div class="ttname"><a href="classmycomanager.html#ae93a4a3aa93b5da14c9fde8acab3ed24">mycomanager::run</a></div><div class="ttdeci">void run()</div><div class="ttdoc">Execute all scheduled tasks in round-robin fashion.</div><div class="ttdef"><b>Definition</b> mycomanager.cpp:37</div></div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md14"></a>
+Example for &lt;tt&gt;std::string&lt;/tt&gt; return.</h3>
+<div class="fragment"><div class="line"> ++</div>
+<div class="line"><span class="keyword">auto</span> <a class="code hl_class" href="classMyPromise.html">fut</a> = <a class="code hl_function" href="group__async.html#ga618cff0e4d3e4af24324e58078690cb9">myco_async</a>(<a class="code hl_variable" href="switch__context__text_8cpp.html#aba61e1dfec0ddb9597ca94bdd6c3691a">manager</a>, []() -&gt; <a class="code hl_function" href="classMyPromise.html#adaac1ee386a9895ea1e4234042d5d37d">std::string</a> {</div>
+<div class="line">    <a class="code hl_function" href="classMyPromise.html#adaac1ee386a9895ea1e4234042d5d37d">std::string</a> <a class="code hl_class" href="classMyPromise.html">msg</a>;</div>
+<div class="line">    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> <a class="code hl_class" href="classMyPromise.html">i</a> = 0; <a class="code hl_class" href="classMyPromise.html">i</a> &lt; 3; <a class="code hl_class" href="classMyPromise.html">i</a>++) {</div>
+<div class="line">        <a class="code hl_class" href="classMyPromise.html">msg</a> += <span class="stringliteral">&quot;chunk&quot;</span> + <a class="code hl_function" href="classMyPromise.html#adaac1ee386a9895ea1e4234042d5d37d">std::to_string</a>(<a class="code hl_class" href="classMyPromise.html">i</a>) + <span class="stringliteral">&quot; &quot;</span>;</div>
+<div class="line">        <a class="code hl_function" href="classmycotask.html#aeeda990a32e7faefb9095adb7c9623a9">mycotask::current_task</a>()-&gt;yield();</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">return</span> <a class="code hl_class" href="classMyPromise.html">msg</a>;</div>
+<div class="line">});</div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_function" href="group__async.html#ga618cff0e4d3e4af24324e58078690cb9">myco_async</a>(<a class="code hl_variable" href="switch__context__text_8cpp.html#aba61e1dfec0ddb9597ca94bdd6c3691a">manager</a>, [<a class="code hl_class" href="classMyPromise.html">fut</a>]() <span class="keyword">mutable</span> {</div>
+<div class="line">    <a class="code hl_function" href="classMyPromise.html#adaac1ee386a9895ea1e4234042d5d37d">std::cout</a> &lt;&lt; <span class="stringliteral">&quot;[string-consumer] Waiting...\n&quot;</span>;</div>
+<div class="line">    <a class="code hl_function" href="classMyPromise.html#adaac1ee386a9895ea1e4234042d5d37d">std::string</a> <a class="code hl_class" href="classMyPromise.html">s</a> = <a class="code hl_class" href="classMyPromise.html">fut</a>.get();</div>
+<div class="line">    <a class="code hl_function" href="classMyPromise.html#adaac1ee386a9895ea1e4234042d5d37d">std::cout</a> &lt;&lt; <span class="stringliteral">&quot;[string-consumer] Received: &quot;</span> &lt;&lt; <a class="code hl_class" href="classMyPromise.html">s</a> &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line">});</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md15"></a>
+Complete examples you can find in &lt;tt&gt;examples/&lt;/tt&gt; directory</h3>
+</div></div><!-- PageDoc -->
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

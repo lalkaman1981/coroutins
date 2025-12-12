@@ -3,9 +3,9 @@ var searchData=
   ['readme_2emd_0',['readme.md',['../readme_8md.html',1,'']]],
   ['ready_1',['ready',['../classMyPromise.html#a9e2190bac2c6436adf9bad3ec21ee23a',1,'MyPromise::ready'],['../classMyPromise_3_01void_01_4.html#ab27cc4b305e0344f6624f961025ab84b',1,'MyPromise&lt; void &gt;::ready']]],
   ['recursive_5fyield_2',['recursive_yield',['../unit__test__mycotask_8cpp.html#a5ac541e0b68c7cef98352f4e14cff6af',1,'unit_test_mycotask.cpp']]],
-  ['result_3a_20tt_20future_20get_20tt_3',['Waiting for the result: &lt;tt&gt;future.get()&lt;/tt&gt;',['../md_readme.html#autotoc_md12',1,'']]],
+  ['result_3a_20tt_20future_20get_20tt_3',['Waiting for the result: &lt;tt&gt;future.get()&lt;/tt&gt;',['../index.html#autotoc_md12',1,'']]],
   ['resume_4',['resume',['../classmycotask.html#a2191deaeb054e043d05c964a1801eb75',1,'mycotask']]],
-  ['return_5',['Example for &lt;tt&gt;std::string&lt;/tt&gt; return.',['../md_readme.html#autotoc_md14',1,'']]],
+  ['return_5',['Example for &lt;tt&gt;std::string&lt;/tt&gt; return.',['../index.html#autotoc_md14',1,'']]],
   ['run_6',['run',['../classmycomanager.html#ae93a4a3aa93b5da14c9fde8acab3ed24',1,'mycomanager']]],
   ['run_5fargument_5ftest_7',['run_argument_test',['../unit__test__mycotask_8cpp.html#a4d6a72db1c3853ab631e47424035d55a',1,'unit_test_mycotask.cpp']]],
   ['run_5fbenchmark_8',['run_benchmark',['../namespacerun__comparison__and__plot__results.html#afa4137b01c221bbe80c2bb7d7f6b995b',1,'run_comparison_and_plot_results']]],
@@ -23,5 +23,5 @@ var searchData=
   ['run_5fno_5fyield_5ftest_20',['run_no_yield_test',['../unit__test__mycotask_8cpp.html#aff56e066b1a32e9e90d21291d7276741',1,'unit_test_mycotask.cpp']]],
   ['run_5frecursion_5ftest_21',['run_recursion_test',['../unit__test__mycotask_8cpp.html#a201b0aa4663c08d7e9a59b66eb84b298',1,'unit_test_mycotask.cpp']]],
   ['run_5fshared_5fptr_5fcapture_5ftest_22',['run_shared_ptr_capture_test',['../unit__test__mycotask_8cpp.html#a8741610c614ef89ac9f668069d0cdfa4',1,'unit_test_mycotask.cpp']]],
-  ['running_20the_20coroutine_20scheduler_23',['Running the coroutine scheduler',['../md_readme.html#autotoc_md13',1,'']]]
+  ['running_20the_20coroutine_20scheduler_23',['Running the coroutine scheduler',['../index.html#autotoc_md13',1,'']]]
 ];
