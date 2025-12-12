@@ -50,7 +50,7 @@ include_directories(include)
 add_executable(${PROJECT_NAME} main.cpp)
 
 if(WIN32)
-  target_link_libraries(coroutines ws2_32)
+  target_link_libraries(${PROJECT_NAME} PRIVATE ws2_32)
 endif()
 
 target_link_libraries(${PROJECT_NAME} PRIVATE libcoro)
