@@ -5,8 +5,8 @@
 #include <type_traits>
 #include <vector>
 
-#include "../mycomanager/mycomanager.h"
-#include "../mycotask/mycotask.h"
+#include "./mycomanager/mycomanager.h"
+#include "./mycotask/mycotask.h"
 
 // ======================= PROMISE =======================
 

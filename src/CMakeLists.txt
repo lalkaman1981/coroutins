@@ -4,6 +4,7 @@ add_library(libcoro STATIC
     ./create_stack/switch_context.S
         mycotask/mycotask.cpp
         mycomanager/mycomanager.cpp
+        ./my_fp/myfp.cpp
 )
 
 target_include_directories(libcoro PUBLIC
