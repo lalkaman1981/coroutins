@@ -50,16 +50,9 @@ public:
 
   explicit MyPromise(mycomanager *mgr) : manager(mgr) {}
 
-  void set_value() {
-    ready = true;
-    wake_waiters();
-  }
+  void set_value();
 
-  void set_exception(std::exception_ptr e) {
-    exception = e;
-    ready = true;
-    wake_waiters();
-  }
+  void set_exception(std::exception_ptr e);
 
 private:
   void wake_waiters() {
@@ -92,15 +85,7 @@ template <> class MyFuture<void> {
 public:
   MyPromise<void> *promise = nullptr;
 
-  void get() {
-    mycotask *self = mycotask::current_task();
-    while (!promise->ready) {
-      promise->waiters.push_back(self);
-      self->yield();
-    }
-    if (promise->exception)
-      std::rethrow_exception(promise->exception);
-  }
+  void get();
 };
 
 // ======================= ASYNC =======================
