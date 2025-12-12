@@ -7,8 +7,5 @@ var searchData=
   ['bench_5fmyco_5flifecycle_4',['bench_myco_lifecycle',['../benchmark__mycomanager_2compare__vs__libcopp_8cpp.html#a85bdc9509e90b73f3e06dc6671f9c873',1,'compare_vs_libcopp.cpp']]],
   ['bench_5fmyco_5fscheduling_5',['bench_myco_scheduling',['../benchmark__mycomanager_2compare__vs__libcopp_8cpp.html#a526cb80b911e45174913051362aab84d',1,'compare_vs_libcopp.cpp']]],
   ['bench_5fmycotask_5fcreation_6',['bench_mycotask_creation',['../benchmark__mycotask_2compare__vs__libcopp_8cpp.html#a07add148d58d984d9e2a456bbf2bdecc',1,'compare_vs_libcopp.cpp']]],
-  ['bench_5fmycotask_5fswitch_7',['bench_mycotask_switch',['../benchmark__mycotask_2compare__vs__libcopp_8cpp.html#a336228e6ce8cec60051043f42ca032f7',1,'compare_vs_libcopp.cpp']]],
-  ['bench_5fpython_5flifecycle_8',['bench_python_lifecycle',['../namespacerun__comparison__and__plot__results.html#a2184a6459512f9f4b474b8262db2a09b',1,'run_comparison_and_plot_results']]],
-  ['bench_5fpython_5fswitch_9',['bench_python_switch',['../namespacerun__comparison__and__plot__results.html#a58f9ef3674f23ac8e28f3e19cc75b25f',1,'run_comparison_and_plot_results']]],
-  ['build_5fbenchmark_10',['build_benchmark',['../namespacerun__comparison__and__plot__results.html#a56a66c64eb67c189e7c3486b75c8799d',1,'run_comparison_and_plot_results']]]
+  ['bench_5fmycotask_5fswitch_7',['bench_mycotask_switch',['../benchmark__mycotask_2compare__vs__libcopp_8cpp.html#a336228e6ce8cec60051043f42ca032f7',1,'compare_vs_libcopp.cpp']]]
 ];

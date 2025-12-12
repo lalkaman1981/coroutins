@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['iterations_0',['ITERATIONS',['../benchmark__mycotask_2compare__vs__libcopp_8cpp.html#a0389aa46002cbd559198f5f345ab8217',1,'compare_vs_libcopp.cpp']]]
+  ['next_0',['next',['../structNode.html#a2559a716f69ccaa76d648d9f1b83065e',1,'Node']]]
 ];

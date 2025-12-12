@@ -14,14 +14,12 @@ var searchData=
   ['coroutines_2eh_11',['coroutines.h',['../coroutines_8h.html',1,'']]],
   ['coroutines_5fmycomanager_5fh_12',['COROUTINES_MYCOMANAGER_H',['../group__scheduler.html#ga33fbd522a2bb68683c9c43f1f4aee9b3',1,'mycomanager.h']]],
   ['course_20project_3a_20coroutines_13',['Course project: Coroutines',['../index.html',1,'']]],
-  ['cpp_5foutput_14',['cpp_output',['../namespacerun__comparison__and__plot__results.html#aeae249bca3291b33b05e3b232f86112e',1,'run_comparison_and_plot_results']]],
-  ['create_5fcoro_5fcontext_15',['create_coro_context',['../group__core.html#ga78e60324fc41e6863dbe9b69f22784ca',1,'create_coro_context():&#160;create_stack.cpp'],['../group__core.html#ga78e60324fc41e6863dbe9b69f22784ca',1,'create_coro_context():&#160;create_stack.cpp']]],
-  ['create_5fcoro_5fstack_16',['create_coro_stack',['../group__core.html#gad463545ef80d2d077f57208dc210b87e',1,'coroutines.h']]],
-  ['create_5fstack_2ecpp_17',['create_stack.cpp',['../create__stack_8cpp.html',1,'']]],
-  ['create_5ftask_18',['create_task',['../classmycotask.html#a127b31a745da8183492a835594b2b3f4',1,'mycotask']]],
-  ['create_5fworld_5fcontext_19',['create_world_context',['../group__core.html#ga0861d4102759691602d2850e2390eb8f',1,'coroutines.h']]],
-  ['create_5fworld_5fcontext_5fs_20',['create_world_context_s',['../group__core.html#ga780594ffab4edf080ee1809004a05dc3',1,'coroutines.h']]],
-  ['creating_20an_20asynchronous_20task_3a_20tt_20myco_5fasync_20tt_21',['Creating an asynchronous task: &lt;tt&gt;myco_async&lt;/tt&gt;',['../index.html#autotoc_md11',1,'']]],
-  ['csv_5foutput_22',['csv_output',['../namespacerun__comparison__and__plot__results.html#add1d4ae62ea02cbfd984924a8ba3b79a',1,'run_comparison_and_plot_results']]],
-  ['current_5ftask_23',['current_task',['../classmycotask.html#aeeda990a32e7faefb9095adb7c9623a9',1,'mycotask']]]
+  ['create_5fcoro_5fcontext_14',['create_coro_context',['../group__core.html#ga78e60324fc41e6863dbe9b69f22784ca',1,'create_coro_context():&#160;create_stack.cpp'],['../group__core.html#ga78e60324fc41e6863dbe9b69f22784ca',1,'create_coro_context():&#160;create_stack.cpp']]],
+  ['create_5fcoro_5fstack_15',['create_coro_stack',['../group__core.html#gad463545ef80d2d077f57208dc210b87e',1,'coroutines.h']]],
+  ['create_5fstack_2ecpp_16',['create_stack.cpp',['../create__stack_8cpp.html',1,'']]],
+  ['create_5ftask_17',['create_task',['../classmycotask.html#a127b31a745da8183492a835594b2b3f4',1,'mycotask']]],
+  ['create_5fworld_5fcontext_18',['create_world_context',['../group__core.html#ga0861d4102759691602d2850e2390eb8f',1,'coroutines.h']]],
+  ['create_5fworld_5fcontext_5fs_19',['create_world_context_s',['../group__core.html#ga780594ffab4edf080ee1809004a05dc3',1,'coroutines.h']]],
+  ['creating_20an_20asynchronous_20task_3a_20tt_20myco_5fasync_20tt_20',['Creating an asynchronous task: &lt;tt&gt;myco_async&lt;/tt&gt;',['../index.html#autotoc_md11',1,'']]],
+  ['current_5ftask_21',['current_task',['../classmycotask.html#aeeda990a32e7faefb9095adb7c9623a9',1,'mycotask']]]
 ];

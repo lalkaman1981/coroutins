@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['lifecycle_5ftasks_0',['LIFECYCLE_TASKS',['../benchmark__mycomanager_2compare__vs__libcopp_8cpp.html#a80d5e421cbce208f4a9d6628d5982583',1,'compare_vs_libcopp.cpp']]]
+  ['old_5frsp_0',['old_rsp',['../structcoro__context.html#ad5dc2933e30927f3c5bf19af551b6378',1,'coro_context']]]
 ];

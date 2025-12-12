@@ -1,20 +1,9 @@
 var searchData=
 [
-  ['recursive_5fyield_0',['recursive_yield',['../unit__test__mycotask_8cpp.html#a5ac541e0b68c7cef98352f4e14cff6af',1,'unit_test_mycotask.cpp']]],
-  ['resume_1',['resume',['../classmycotask.html#a2191deaeb054e043d05c964a1801eb75',1,'mycotask']]],
-  ['run_2',['run',['../classmycomanager.html#ae93a4a3aa93b5da14c9fde8acab3ed24',1,'mycomanager']]],
-  ['run_5fargument_5ftest_3',['run_argument_test',['../unit__test__mycotask_8cpp.html#a4d6a72db1c3853ab631e47424035d55a',1,'unit_test_mycotask.cpp']]],
-  ['run_5fbenchmark_4',['run_benchmark',['../namespacerun__comparison__and__plot__results.html#afa4137b01c221bbe80c2bb7d7f6b995b',1,'run_comparison_and_plot_results']]],
-  ['run_5fboost_5ftest_5',['run_boost_test',['../unit__test__mycotask_8cpp.html#a780d4810afffd3a89dfc79b029faeff2',1,'unit_test_mycotask.cpp']]],
-  ['run_5fcpp_5fbenchmark_6',['run_cpp_benchmark',['../namespacerun__comparison__and__plot__results.html#aeffae946f2c7b50718e9dc1cf6cedc71',1,'run_comparison_and_plot_results']]],
-  ['run_5fextreme_5fcreation_5ftest_7',['run_extreme_creation_test',['../unit__test__mycotask_8cpp.html#af10657384b4efd0b986db09807cc3d70',1,'unit_test_mycotask.cpp']]],
-  ['run_5ffpu_5ftest_8',['run_fpu_test',['../unit__test__mycotask_8cpp.html#aa2a8d0f4677691095f1d6052c638db57',1,'unit_test_mycotask.cpp']]],
-  ['run_5fheavy_5fcompute_5ftest_9',['run_heavy_compute_test',['../unit__test__mycotask_8cpp.html#ac15b446ae4f4a99d5a1b73c6343b65c1',1,'unit_test_mycotask.cpp']]],
-  ['run_5finterleaving_5ftest_10',['run_interleaving_test',['../unit__test__mycotask_8cpp.html#a1577408b2ed155455b56cdcba1d83f07',1,'unit_test_mycotask.cpp']]],
-  ['run_5flarge_5fstack_5ftest_11',['run_large_stack_test',['../unit__test__mycotask_8cpp.html#a58e305be6077e731d2df8a477c999557',1,'unit_test_mycotask.cpp']]],
-  ['run_5fmatrix_5ftest_12',['run_matrix_test',['../unit__test__mycotask_8cpp.html#a509de046b78dfc8fa046df498b8407f5',1,'unit_test_mycotask.cpp']]],
-  ['run_5fmove_5fsemantics_5ftest_13',['run_move_semantics_test',['../unit__test__mycotask_8cpp.html#a8b44d06c91f7bad31ea33b487912a1a0',1,'unit_test_mycotask.cpp']]],
-  ['run_5fno_5fyield_5ftest_14',['run_no_yield_test',['../unit__test__mycotask_8cpp.html#aff56e066b1a32e9e90d21291d7276741',1,'unit_test_mycotask.cpp']]],
-  ['run_5frecursion_5ftest_15',['run_recursion_test',['../unit__test__mycotask_8cpp.html#a201b0aa4663c08d7e9a59b66eb84b298',1,'unit_test_mycotask.cpp']]],
-  ['run_5fshared_5fptr_5fcapture_5ftest_16',['run_shared_ptr_capture_test',['../unit__test__mycotask_8cpp.html#a8741610c614ef89ac9f668069d0cdfa4',1,'unit_test_mycotask.cpp']]]
+  ['send_5fall_0',['send_all',['../main_8cpp.html#a4909b74a3bd902054e7eb9f06babf028',1,'main.cpp']]],
+  ['set_5fexception_1',['set_exception',['../classMyPromise.html#a87187a6403bfe7e970a051da45efbb7a',1,'MyPromise::set_exception()'],['../classMyPromise_3_01void_01_4.html#aa7aa7106f1b032b093d5593e57edbcd8',1,'MyPromise&lt; void &gt;::set_exception()']]],
+  ['set_5fnext_2',['set_next',['../structNodeTraits.html#abed02d48948c4c48b4f5fcf25978e81b',1,'NodeTraits::set_next()'],['../structMycoNodeTraits.html#aa12911d60f04c9f1f52a457dc3fadc85',1,'MycoNodeTraits::set_next()']]],
+  ['set_5fvalue_3',['set_value',['../classMyPromise.html#a6849439ccb557b42c2ed96fb48d9ed94',1,'MyPromise::set_value()'],['../classMyPromise_3_01void_01_4.html#af4faef4289def279e9b504aec1a84e85',1,'MyPromise&lt; void &gt;::set_value()']]],
+  ['start_4',['start',['../classmycotask.html#ab5f59db09fd4238bd12d4c2dd8fad320',1,'mycotask']]],
+  ['switch_5fcontext_5',['switch_context',['../switch__context_8h.html#a29310cf769f28869cffa0632a95e07d6',1,'switch_context.h']]]
 ];
