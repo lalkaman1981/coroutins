@@ -1,9 +1,15 @@
 #include "src/my_fp/myfp.h"
 #include <iostream>
-#include <netinet/in.h>
 #include <string>
-#include <sys/socket.h>
 #include <unistd.h>
+#ifdef _WIN32
+    #include <winsock2.h>
+    #include <ws2tcpip.h>
+#else
+    #include <netinet/in.h>
+    #include <arpa/inet.h>
+    #include <sys/socket.h>
+#endif
 
 void send_all(int fd, const std::string &msg) {
   send(fd, msg.c_str(), msg.size(), 0);
@@ -19,7 +25,7 @@ int main() {
   }
 
   int opt = 1;
-  setsockopt(server_fd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt));
+  setsockopt(server_fd, SOL_SOCKET, SO_REUSEADDR, reinterpret_cast<const char*>(&opt), sizeof(opt));
 
   sockaddr_in addr{};
   addr.sin_family = AF_INET;

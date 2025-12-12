@@ -43,7 +43,7 @@ void mycomanager::run() {
   }
 
   mycotask *cur = &head_;
-  mycotask *prev;
+  mycotask *prev = nullptr;
   int count = 0;
 
   while (true) {

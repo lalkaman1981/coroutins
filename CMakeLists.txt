@@ -49,6 +49,10 @@ include_directories(include)
 #================================================================
 add_executable(${PROJECT_NAME} main.cpp)
 
+if(WIN32)
+  target_link_libraries(coroutines ws2_32)
+endif()
+
 target_link_libraries(${PROJECT_NAME} PRIVATE libcoro)
 if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
   target_link_options(${PROJECT_NAME} PRIVATE "-no-pie")

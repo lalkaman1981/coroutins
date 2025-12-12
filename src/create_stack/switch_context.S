@@ -40,17 +40,18 @@ switch_context:
     push r15
 
 #ifdef _WIN32
+    mov r12, rdx
     mov QWORD PTR [rcx + 0], rsp
     lea r13, [rcx + 64]
     mov eax, 7
     xor edx, edx
     xsave [r13]
 
-    lea r13, [rdx + 64]
+    lea r13, [r12 + 64]
     mov eax, 7
     xor edx, edx
     xrstor [r13]
-    mov rsp, QWORD PTR [rdx + 0]
+    mov rsp, QWORD PTR [r12 + 0]
 #else
     mov QWORD PTR [rdi + 0], rsp
     lea r13, [rdi + 64]
