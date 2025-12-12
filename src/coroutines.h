@@ -1,4 +1,16 @@
 /**
+* @mainpage Coroutines Library
+ *
+ * @section modules Main Modules
+ *
+ * - @ref core "Core API" - Main coroutine functions
+ * - @ref task "Task Management" - Individual coroutines
+ * - @ref scheduler "Scheduler" - Round-robin manager
+ * - @ref async "Async Operations" - Promise/Future
+ * - @ref context "Context" - Low-level switching
+ */
+
+/**
  * @file coroutines.h
  * @brief Main coroutine API header
  *
