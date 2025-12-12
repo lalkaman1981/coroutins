@@ -6,6 +6,11 @@
  * Saves and restores all general-purpose registers, RFLAGS, and extended CPU state.
  */
 
+
+/** @addtogroup context
+ *  @{
+ */
+
 .intel_syntax noprefix
 
 #ifdef _WIN32
@@ -78,3 +83,5 @@ switch_context:
     popfq
 
     ret
+
+/** @} */

@@ -6,6 +6,10 @@
  * allowing coroutines to wait for values produced by other coroutines.
  */
 
+/** @addtogroup async
+ *  @{
+ */
+
 #pragma once
 
 #include <exception>
@@ -210,3 +214,5 @@ auto myco_async(mycomanager &manager, F &&func) {
         return MyFuture<R>{promise};
     }
 }
+
+/** @} */

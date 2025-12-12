@@ -6,6 +6,10 @@
  * to efficiently manage coroutine execution without dynamic memory overhead per node.
  */
 
+/** @addtogroup scheduler
+ *  @{
+ */
+
 #pragma once
 #include "../mycotask/mycotask.h"
 #include <boost/intrusive/circular_slist_algorithms.hpp>
@@ -98,3 +102,5 @@ public:
 };
 
 #endif // COROUTINES_MYCOMANAGER_H
+
+/** @} */

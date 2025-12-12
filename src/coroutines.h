@@ -7,6 +7,9 @@
  * coroutine stacks.
  */
 
+/** @addtogroup core
+ *  @{
+ */
 #ifndef CREATE_STACK
 #define CREATE_STACK
 
@@ -84,3 +87,5 @@ void call_coro(coro_context *old_context, coro_context *new_context, F &&f,
 coro_context *create_coro_context();
 
 #endif
+
+/** @} */

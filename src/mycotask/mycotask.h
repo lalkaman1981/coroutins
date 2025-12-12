@@ -6,6 +6,9 @@
  * with automatic context management and lifecycle tracking.
  */
 
+/** @addtogroup task
+ *  @{
+ */
 #ifndef COROUTINES_MYCOTASK_H
 #define COROUTINES_MYCOTASK_H
 
@@ -166,3 +169,5 @@ public:
 };
 
 #endif // COROUTINES_MYCOTASK_H
+
+/** @} */
