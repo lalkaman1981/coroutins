@@ -7,7 +7,8 @@ var searchData=
   ['mycotask_2ecpp_4',['mycotask.cpp',['../mycotask_8cpp.html',1,'']]],
   ['mycotask_2eh_5',['mycotask.h',['../mycotask_8h.html',1,'']]],
   ['mycotask_5ftest_5fexample_2ecpp_6',['mycotask_test_example.cpp',['../mycotask__test__example_8cpp.html',1,'']]],
-  ['myfp_2eh_7',['myfp.h',['../myfp_8h.html',1,'']]],
-  ['myfp_5fint_5fexample_2ecpp_8',['myfp_int_example.cpp',['../myfp__int__example_8cpp.html',1,'']]],
-  ['myfp_5fstring_5fexample_2ecpp_9',['myfp_string_example.cpp',['../myfp__string__example_8cpp.html',1,'']]]
+  ['myfp_2ecpp_7',['myfp.cpp',['../myfp_8cpp.html',1,'']]],
+  ['myfp_2eh_8',['myfp.h',['../myfp_8h.html',1,'']]],
+  ['myfp_5fint_5fexample_2ecpp_9',['myfp_int_example.cpp',['../myfp__int__example_8cpp.html',1,'']]],
+  ['myfp_5fstring_5fexample_2ecpp_10',['myfp_string_example.cpp',['../myfp__string__example_8cpp.html',1,'']]]
 ];

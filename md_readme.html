@@ -214,7 +214,7 @@ Creating an asynchronous task: &lt;tt&gt;myco_async&lt;/tt&gt;</h3>
 <div class="line">    <a class="code hl_function" href="classMyPromise.html#adaac1ee386a9895ea1e4234042d5d37d">std::cout</a> &lt;&lt; <span class="stringliteral">&quot;[producer] Done\n&quot;</span>;</div>
 <div class="line">    <span class="keywordflow">return</span> 777;</div>
 <div class="line">});</div>
-<div class="ttc" id="amyfp_8h_html_a618cff0e4d3e4af24324e58078690cb9"><div class="ttname"><a href="myfp_8h.html#a618cff0e4d3e4af24324e58078690cb9">myco_async</a></div><div class="ttdeci">auto myco_async(mycomanager &amp;manager, F &amp;&amp;func)</div><div class="ttdef"><b>Definition</b> myfp.h:108</div></div>
+<div class="ttc" id="amyfp_8h_html_a618cff0e4d3e4af24324e58078690cb9"><div class="ttname"><a href="myfp_8h.html#a618cff0e4d3e4af24324e58078690cb9">myco_async</a></div><div class="ttdeci">auto myco_async(mycomanager &amp;manager, F &amp;&amp;func)</div><div class="ttdef"><b>Definition</b> myfp.h:93</div></div>
 </div><!-- fragment --><h3><a class="anchor" id="autotoc_md12"></a>
 Waiting for the result: &lt;tt&gt;future.get()&lt;/tt&gt;</h3>
 <p>Calling future.get() suspends the current coroutine until the producer sets a value or exception on the promise.</p>

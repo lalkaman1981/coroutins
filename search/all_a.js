@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['main_0',['main',['../myfp__string__example_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;myfp_string_example.cpp'],['../myfp__int__example_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;myfp_int_example.cpp'],['../mycotask__test__example_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;mycotask_test_example.cpp'],['../mycomanager__test__example_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;mycomanager_test_example.cpp'],['../switch__context__text_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;switch_context_text.cpp'],['../test__asm_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;test_asm.cpp'],['../main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;main.cpp'],['../benchmark__mycomanager_2compare__vs__libcopp_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;compare_vs_libcopp.cpp'],['../benchmark__mycotask_2compare__vs__libcopp_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;compare_vs_libcopp.cpp'],['../unit__test__mycotask_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;unit_test_mycotask.cpp']]],
+  ['main_0',['main',['../myfp__int__example_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;myfp_int_example.cpp'],['../mycotask__test__example_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;mycotask_test_example.cpp'],['../mycomanager__test__example_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;mycomanager_test_example.cpp'],['../myfp__string__example_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;myfp_string_example.cpp'],['../switch__context__text_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;switch_context_text.cpp'],['../test__asm_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;test_asm.cpp'],['../main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;main.cpp'],['../benchmark__mycomanager_2compare__vs__libcopp_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;compare_vs_libcopp.cpp'],['../benchmark__mycotask_2compare__vs__libcopp_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;compare_vs_libcopp.cpp'],['../unit__test__mycotask_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;unit_test_mycotask.cpp']]],
   ['main_2ecpp_1',['main.cpp',['../main_8cpp.html',1,'']]],
   ['manager_2',['manager',['../switch__context__text_8cpp.html#aba61e1dfec0ddb9597ca94bdd6c3691a',1,'manager:&#160;switch_context_text.cpp'],['../classMyPromise_3_01void_01_4.html#aaad562dd437d457f9cd5a99536fbfaea',1,'MyPromise&lt; void &gt;::manager'],['../classMyPromise.html#abae345f598b36a1a109f03a020b2f053',1,'MyPromise::manager']]],
   ['my_5fco_5ftype_3',['my_co_type',['../benchmark__mycotask_2compare__vs__libcopp_8cpp.html#a67cd2d58d496b645b746f075752a2899',1,'compare_vs_libcopp.cpp']]],
@@ -10,7 +10,7 @@ var searchData=
   ['myco_5fempty_5fworker_7',['myco_empty_worker',['../benchmark__mycomanager_2compare__vs__libcopp_8cpp.html#a70420edfa954ebb56d8d800abf1ea5e3',1,'compare_vs_libcopp.cpp']]],
   ['myco_5fsched_5fworker_8',['myco_sched_worker',['../benchmark__mycomanager_2compare__vs__libcopp_8cpp.html#adce1a34014f2454c7295226da083261c',1,'compare_vs_libcopp.cpp']]],
   ['myco_5fworker_9',['myco_worker',['../benchmark__mycotask_2compare__vs__libcopp_8cpp.html#af8a418e29345dcf048c027f9ffd1ea5f',1,'compare_vs_libcopp.cpp']]],
-  ['mycomanager_10',['mycomanager',['../classmycomanager.html',1,'mycomanager'],['../classmycomanager.html#abb300510d906cbe517d5054fa05bfbca',1,'mycomanager::mycomanager(const size_t max_number_of_tasks=1000)'],['../classmycomanager.html#a186446764ec179dbf6012a07bfd20d53',1,'mycomanager::mycomanager(Tasks &amp;&amp;...ts)'],['../classmycotask.html#a84a625742081859d929266cb6a4cccb1',1,'mycotask::mycomanager']]],
+  ['mycomanager_10',['mycomanager',['../classmycomanager.html#abb300510d906cbe517d5054fa05bfbca',1,'mycomanager::mycomanager()'],['../classmycomanager.html',1,'mycomanager'],['../classmycomanager.html#a186446764ec179dbf6012a07bfd20d53',1,'mycomanager::mycomanager()'],['../classmycotask.html#a84a625742081859d929266cb6a4cccb1',1,'mycotask::mycomanager']]],
   ['mycomanager_20tt_11',['mycomanager tt',['../md_readme.html#autotoc_md8',1,'&lt;tt&gt;mycomanager&lt;/tt&gt;'],['../md_readme.html#autotoc_md9',1,'Example: Using &lt;tt&gt;mycomanager&lt;/tt&gt;']]],
   ['mycomanager_2ecpp_12',['mycomanager.cpp',['../mycomanager_8cpp.html',1,'']]],
   ['mycomanager_2eh_13',['mycomanager.h',['../mycomanager_8h.html',1,'']]],
@@ -21,11 +21,12 @@ var searchData=
   ['mycotask_2ecpp_18',['mycotask.cpp',['../mycotask_8cpp.html',1,'']]],
   ['mycotask_2eh_19',['mycotask.h',['../mycotask_8h.html',1,'']]],
   ['mycotask_5ftest_5fexample_2ecpp_20',['mycotask_test_example.cpp',['../mycotask__test__example_8cpp.html',1,'']]],
-  ['myfp_2eh_21',['myfp.h',['../myfp_8h.html',1,'']]],
-  ['myfp_5fint_5fexample_2ecpp_22',['myfp_int_example.cpp',['../myfp__int__example_8cpp.html',1,'']]],
-  ['myfp_5fstring_5fexample_2ecpp_23',['myfp_string_example.cpp',['../myfp__string__example_8cpp.html',1,'']]],
-  ['myfuture_24',['MyFuture',['../classMyFuture.html',1,'']]],
-  ['myfuture_3c_20void_20_3e_25',['MyFuture&lt; void &gt;',['../classMyFuture_3_01void_01_4.html',1,'']]],
-  ['mypromise_26',['mypromise',['../classMyPromise.html',1,'MyPromise&lt; T &gt;'],['../classMyPromise_3_01void_01_4.html#abddb93aac1a72ceab23fe13814211535',1,'MyPromise&lt; void &gt;::MyPromise()'],['../classMyPromise.html#adaac1ee386a9895ea1e4234042d5d37d',1,'MyPromise::MyPromise()']]],
-  ['mypromise_3c_20void_20_3e_27',['MyPromise&lt; void &gt;',['../classMyPromise_3_01void_01_4.html',1,'']]]
+  ['myfp_2ecpp_21',['myfp.cpp',['../myfp_8cpp.html',1,'']]],
+  ['myfp_2eh_22',['myfp.h',['../myfp_8h.html',1,'']]],
+  ['myfp_5fint_5fexample_2ecpp_23',['myfp_int_example.cpp',['../myfp__int__example_8cpp.html',1,'']]],
+  ['myfp_5fstring_5fexample_2ecpp_24',['myfp_string_example.cpp',['../myfp__string__example_8cpp.html',1,'']]],
+  ['myfuture_25',['MyFuture',['../classMyFuture.html',1,'']]],
+  ['myfuture_3c_20void_20_3e_26',['MyFuture&lt; void &gt;',['../classMyFuture_3_01void_01_4.html',1,'']]],
+  ['mypromise_27',['mypromise',['../classMyPromise.html',1,'MyPromise&lt; T &gt;'],['../classMyPromise_3_01void_01_4.html#abddb93aac1a72ceab23fe13814211535',1,'MyPromise&lt; void &gt;::MyPromise()'],['../classMyPromise.html#adaac1ee386a9895ea1e4234042d5d37d',1,'MyPromise::MyPromise()']]],
+  ['mypromise_3c_20void_20_3e_28',['MyPromise&lt; void &gt;',['../classMyPromise_3_01void_01_4.html',1,'']]]
 ];
