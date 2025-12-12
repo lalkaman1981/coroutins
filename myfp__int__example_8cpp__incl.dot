@@ -33,16 +33,17 @@ digraph "examples/myfp_int_example.cpp"
   Node13 -> Node10 [id="edge14_Node000013_Node000010",color="steelblue1",style="solid",tooltip=" "];
   Node13 -> Node5 [id="edge15_Node000013_Node000005",color="steelblue1",style="solid",tooltip=" "];
   Node13 -> Node14 [id="edge16_Node000013_Node000014",color="steelblue1",style="solid",tooltip=" "];
-  Node14 [id="Node000014",label="create_stack/switch\l_context.h",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$switch__context_8h.html",tooltip="Core data structures for coroutine context switching."];
-  Node14 -> Node15 [id="edge17_Node000014_Node000015",color="steelblue1",style="solid",tooltip=" "];
-  Node15 [id="Node000015",label="cstdint",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
-  Node8 -> Node16 [id="edge18_Node000008_Node000016",color="steelblue1",style="solid",tooltip=" "];
-  Node16 [id="Node000016",label="iostream",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
-  Node8 -> Node5 [id="edge19_Node000008_Node000005",color="steelblue1",style="solid",tooltip=" "];
-  Node8 -> Node17 [id="edge20_Node000008_Node000017",color="steelblue1",style="solid",tooltip=" "];
+  Node14 [id="Node000014",label="iostream",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
+  Node13 -> Node15 [id="edge17_Node000013_Node000015",color="steelblue1",style="solid",tooltip=" "];
+  Node15 [id="Node000015",label="create_stack/switch\l_context.h",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$switch__context_8h.html",tooltip="Core data structures for coroutine context switching."];
+  Node15 -> Node16 [id="edge18_Node000015_Node000016",color="steelblue1",style="solid",tooltip=" "];
+  Node16 [id="Node000016",label="cstdint",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
+  Node8 -> Node14 [id="edge19_Node000008_Node000014",color="steelblue1",style="solid",tooltip=" "];
+  Node8 -> Node5 [id="edge20_Node000008_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node8 -> Node17 [id="edge21_Node000008_Node000017",color="steelblue1",style="solid",tooltip=" "];
   Node17 [id="Node000017",label="cassert",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
-  Node7 -> Node18 [id="edge21_Node000007_Node000018",color="steelblue1",style="solid",tooltip=" "];
+  Node7 -> Node18 [id="edge22_Node000007_Node000018",color="steelblue1",style="solid",tooltip=" "];
   Node18 [id="Node000018",label="boost/intrusive/circular\l_slist_algorithms.hpp",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
-  Node2 -> Node8 [id="edge22_Node000002_Node000008",color="steelblue1",style="solid",tooltip=" "];
-  Node1 -> Node16 [id="edge23_Node000001_Node000016",color="steelblue1",style="solid",tooltip=" "];
+  Node2 -> Node8 [id="edge23_Node000002_Node000008",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node14 [id="edge24_Node000001_Node000014",color="steelblue1",style="solid",tooltip=" "];
 }

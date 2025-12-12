@@ -22,14 +22,15 @@ digraph "src/mycomanager/mycomanager.h"
   Node7 -> Node8 [id="edge9_Node000007_Node000008",color="steelblue1",style="solid",tooltip=" "];
   Node8 [id="Node000008",label="utility",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
   Node7 -> Node9 [id="edge10_Node000007_Node000009",color="steelblue1",style="solid",tooltip=" "];
-  Node9 [id="Node000009",label="create_stack/switch\l_context.h",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$switch__context_8h.html",tooltip="Core data structures for coroutine context switching."];
-  Node9 -> Node10 [id="edge11_Node000009_Node000010",color="steelblue1",style="solid",tooltip=" "];
-  Node10 [id="Node000010",label="cstdint",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
-  Node2 -> Node11 [id="edge12_Node000002_Node000011",color="steelblue1",style="solid",tooltip=" "];
-  Node11 [id="Node000011",label="iostream",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
-  Node2 -> Node8 [id="edge13_Node000002_Node000008",color="steelblue1",style="solid",tooltip=" "];
-  Node2 -> Node12 [id="edge14_Node000002_Node000012",color="steelblue1",style="solid",tooltip=" "];
+  Node9 [id="Node000009",label="iostream",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
+  Node7 -> Node10 [id="edge11_Node000007_Node000010",color="steelblue1",style="solid",tooltip=" "];
+  Node10 [id="Node000010",label="create_stack/switch\l_context.h",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$switch__context_8h.html",tooltip="Core data structures for coroutine context switching."];
+  Node10 -> Node11 [id="edge12_Node000010_Node000011",color="steelblue1",style="solid",tooltip=" "];
+  Node11 [id="Node000011",label="cstdint",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
+  Node2 -> Node9 [id="edge13_Node000002_Node000009",color="steelblue1",style="solid",tooltip=" "];
+  Node2 -> Node8 [id="edge14_Node000002_Node000008",color="steelblue1",style="solid",tooltip=" "];
+  Node2 -> Node12 [id="edge15_Node000002_Node000012",color="steelblue1",style="solid",tooltip=" "];
   Node12 [id="Node000012",label="cassert",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
-  Node1 -> Node13 [id="edge15_Node000001_Node000013",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node13 [id="edge16_Node000001_Node000013",color="steelblue1",style="solid",tooltip=" "];
   Node13 [id="Node000013",label="boost/intrusive/circular\l_slist_algorithms.hpp",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
 }
