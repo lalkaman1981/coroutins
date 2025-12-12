@@ -1,3 +1,11 @@
+/**
+ * @file create_stack.S
+ * @brief Bootstrap new coroutine on dedicated stack
+ * 
+ * Assembly routine to initialize and execute a coroutine on its new stack.
+ * Handles stack alignment and calling convention for both Windows and Linux.
+ */
+
 .intel_syntax noprefix
 
 #ifdef _WIN32
@@ -27,10 +35,9 @@ create_coro_stack:
     push r15
 
 #ifdef _WIN32
-
     push rax
     push rdx
-    lea r13, [r9 + 64] 
+    lea r13, [r9 + 64]
     mov eax, 7
     xor edx, edx
     xsave [r13]
@@ -38,7 +45,6 @@ create_coro_stack:
     pop rax
 
     mov QWORD PTR [r9 + 0], rsp
-
     mov r12, r9
 
     mov rsp, [r8 + 4168]
@@ -48,11 +54,9 @@ create_coro_stack:
     mov rax, rcx
     mov rcx, rdx
     xor rdx, rdx
-
     call rax
 
     mov r9, r12
-
     mov rsp, QWORD PTR [r9 + 0]
     
     lea r13, [r9 + 64]
@@ -61,10 +65,9 @@ create_coro_stack:
     xrstor [r13]
 
 #else
-
     push rax
     push rdx
-    lea r13, [rcx + 64] 
+    lea r13, [rcx + 64]
     mov eax, 7
     xor edx, edx
     xsave [r13]
@@ -72,20 +75,17 @@ create_coro_stack:
     pop rax
 
     mov QWORD PTR [rcx + 0], rsp
-
     mov r12, rcx
 
     mov rsp, [rdx + 4168]
     and rsp, -16
 
-    mov rax, rdi            # rax = fn
-    mov rdi, rsi            # args -> rdi
+    mov rax, rdi
+    mov rdi, rsi
     xor rsi, rsi
-
     call rax
 
     mov rcx, r12
-
     mov rsp, QWORD PTR [rcx + 0]
 
     lea r13, [rcx + 64]

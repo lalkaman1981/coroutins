@@ -1,5 +1,12 @@
+/**
+* @file myfp.cpp
+ * @brief Implementation of promise-future void specializations
+ *
+ * Provides implementations for MyPromise<void> and MyFuture<void>
+ * member functions that handle completion without return values.
+ */
+
 #include "myfp.h"
-// ======================= PROMISE<void> =======================
 
 void MyPromise<void>::set_value() {
   ready = true;
@@ -15,8 +22,6 @@ void MyPromise<void>::set_exception(std::exception_ptr e) {
     t->resume();
   waiters.clear();
 }
-
-// ======================= FUTURE<void> =======================
 
 void MyFuture<void>::get() {
   mycotask *self = mycotask::current_task();

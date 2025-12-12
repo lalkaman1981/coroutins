@@ -1,25 +1,24 @@
-//
-// Created by julfy on 10/12/25.
-//
+/**
+ * @file mycotask.cpp
+ * @brief Implementation of stackful coroutine operations
+ *
+ * Provides lifecycle management, context switching, and execution control
+ * for cooperative multitasking coroutines.
+ */
 
 #include "mycotask.h"
 
 coro_context *mycotask::main_ctx_ = create_coro_context();
 mycotask *mycotask::current_task_ = nullptr;
-std::atomic<std::size_t> mycotask::global_id_counter_ = 69;
+std::atomic<size_t> mycotask::global_id_counter_ = 69;
 
 void mycotask::trampoline(void *arg) {
     const auto *fn = static_cast<std::function<void()> *>(arg);
-    // run user code
     (*fn)();
-    // a func returned
-    delete fn; // we do not need this anymore
-
+    delete fn;
     current_task_->started_ = false;
     current_task_->ended_ = true;
-
     switch_context(current_task_->ctx_, main_ctx_);
-
     volatile int prevent_optimization = 0;
     (void)prevent_optimization;
 }
@@ -30,7 +29,6 @@ mycotask::mycotask(std::function<void()> f) : func_(std::move(f)) {
 }
 
 mycotask::mycotask() {
-    // std::cerr << "DEFAULT CONTRUCTOR FOR MYCOTASK CALLED!" << std::endl;
     mycotask::create_task([] {
         std::cerr << "This is a default initialization for cotask" << std::endl;
         exit(EXIT_FAILURE);
@@ -42,9 +40,7 @@ mycotask::mycotask(mycotask &&other) noexcept
       ended_(other.ended_), next_(std::move(other.next_)) {
     id_.store(other.id_.load(std::memory_order_relaxed),
               std::memory_order_relaxed);
-
     other.next_ = nullptr;
-
     other.ctx_ = nullptr;
     other.started_ = false;
     other.ended_ = false;
@@ -59,25 +55,19 @@ mycotask &mycotask::operator=(mycotask &&other) noexcept {
         ended_ = other.ended_;
         id_.store(other.id_.load(std::memory_order_relaxed),
                   std::memory_order_relaxed);
-
         other.ctx_ = nullptr;
         other.started_ = false;
         other.ended_ = false;
-        other.id_.store(0, std::memory_order_relaxed); // reset safely
+        other.id_.store(0, std::memory_order_relaxed);
     }
     return *this;
 }
 
-mycotask::~mycotask() { // TODO: too much destructor calling (fix it later)
-    // std::cout << "CALLED DESTRUCTOR ID: " << id_ << std::endl;
-
+mycotask::~mycotask() {
     if (ctx_) {
         delete[] ctx_->stack_base;
         ctx_->stack_base = nullptr;
         ctx_->stack_top = nullptr;
-
-        // std::cout << "CALLED DESTRUCTOR WENT IN" << std::endl;
-
         delete ctx_;
         ctx_ = nullptr;
     }
@@ -93,8 +83,6 @@ void mycotask::start() {
 
     started_ = true;
     current_task_ = this;
-
-    // copy func_ onto heap for the trampoline
     auto *pf = new std::function<void()>(func_);
     create_coro_stack(&trampoline, pf, ctx_, main_ctx_);
 }
@@ -104,15 +92,15 @@ void mycotask::resume() {
         std::cerr << "mycotask: the task has ended!" << std::endl;
         exit(EXIT_FAILURE);
     }
+
     if (!started_) {
         std::cerr << "mycotask: you can only resume a started coroutine! Please "
                      "call mycotask::start() first!"
                   << std::endl;
         exit(EXIT_FAILURE);
     }
-    // std::cout << "RESUME CALLED" << std::endl;
-    current_task_ = this;
 
+    current_task_ = this;
     switch_context(main_ctx_, ctx_);
 }
 
