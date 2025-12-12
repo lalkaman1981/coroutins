@@ -79,9 +79,13 @@ $(function() {
   <div class="headertitle"><div class="title">create_stack.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;functional&gt;</code><br />
-<code>#include &lt;utility&gt;</code><br />
+
+<p>Stack allocation and initialization for coroutine contexts.  
+<a href="#details">More...</a></p>
+<div class="textblock"><code>#include &lt;cstddef&gt;</code><br />
+<code>#include &lt;functional&gt;</code><br />
 <code>#include &quot;<a class="el" href="coroutines_8h_source.html">../coroutines.h</a>&quot;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for create_stack.cpp:</div>
 <div class="dyncontent">
@@ -96,11 +100,16 @@ Macros</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a71369f2943e58cfb121fdb59553096f9" id="r_a71369f2943e58cfb121fdb59553096f9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMyPromise.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="create__stack_8cpp.html#a71369f2943e58cfb121fdb59553096f9">call_fn</a> (<a class="el" href="classMyPromise.html">void</a> *<a class="el" href="classMyPromise.html">p</a>)</td></tr>
+<tr class="memdesc:a71369f2943e58cfb121fdb59553096f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute a function object with exception safety.  <br /></td></tr>
 <tr class="separator:a71369f2943e58cfb121fdb59553096f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a78e60324fc41e6863dbe9b69f22784ca" id="r_a78e60324fc41e6863dbe9b69f22784ca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structcoro__context.html">coro_context</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="create__stack_8cpp.html#a78e60324fc41e6863dbe9b69f22784ca">create_coro_context</a> ()</td></tr>
+<tr class="memdesc:a78e60324fc41e6863dbe9b69f22784ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate and initialize a new coroutine context.  <br /></td></tr>
 <tr class="separator:a78e60324fc41e6863dbe9b69f22784ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Stack allocation and initialization for coroutine contexts. </p>
+<p>Provides functions for creating coroutine execution stacks with proper memory layout for independent coroutine execution. </p>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a6423a880df59733d2d9b509c7718d3a9" name="a6423a880df59733d2d9b509c7718d3a9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6423a880df59733d2d9b509c7718d3a9">&#9670;&#160;</a></span>STACK_SIZE</h2>
 
@@ -132,6 +141,16 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Execute a function object with exception safety. </p>
+<p>Execute <a class="el" href="classMyPromise.html#adaac1ee386a9895ea1e4234042d5d37d" title="Construct promise with manager.">std::function</a> wrapper.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p</td><td>Pointer to <a class="el" href="classMyPromise.html#adaac1ee386a9895ea1e4234042d5d37d" title="Construct promise with manager.">std::function&lt;void()&gt;</a> to execute</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Wrapper called from assembly code to execute coroutine function. Ensures proper cleanup even if exceptions are thrown. </p>
+
 </div>
 </div>
 <a id="a78e60324fc41e6863dbe9b69f22784ca" name="a78e60324fc41e6863dbe9b69f22784ca"></a>
@@ -148,6 +167,11 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Allocate and initialize a new coroutine context. </p>
+<p>Allocate new coroutine execution context.</p>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to newly created <a class="el" href="structcoro__context.html" title="Coroutine execution context.">coro_context</a> structure</dd></dl>
+<p>Allocates 16KB stack memory and initializes context structure. Stack grows downward from stack_top toward stack_base. </p>
 
 </div>
 </div>

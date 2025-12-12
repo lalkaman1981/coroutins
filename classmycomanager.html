@@ -76,21 +76,31 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Round-robin scheduler for cooperative multitasking.  
+ <a href="classmycomanager.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="mycomanager_8h_source.html">mycomanager.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a186446764ec179dbf6012a07bfd20d53" id="r_a186446764ec179dbf6012a07bfd20d53"><td class="memTemplParams" colspan="2">template&lt;typename... Tasks&gt; </td></tr>
 <tr class="memitem:a186446764ec179dbf6012a07bfd20d53"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classmycomanager.html#a186446764ec179dbf6012a07bfd20d53">mycomanager</a> (<a class="el" href="classMyPromise.html">Tasks</a> &amp;&amp;...<a class="el" href="classMyPromise.html">ts</a>)</td></tr>
+<tr class="memdesc:a186446764ec179dbf6012a07bfd20d53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct manager with variadic list of tasks.  <br /></td></tr>
 <tr class="separator:a186446764ec179dbf6012a07bfd20d53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abb300510d906cbe517d5054fa05bfbca" id="r_abb300510d906cbe517d5054fa05bfbca"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmycomanager.html#abb300510d906cbe517d5054fa05bfbca">mycomanager</a> (<a class="el" href="classMyPromise.html">const</a> <a class="el" href="classMyPromise.html">size_t</a> <a class="el" href="classMyPromise.html">max_number_of_tasks</a>=1000)</td></tr>
+<tr class="memdesc:abb300510d906cbe517d5054fa05bfbca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an empty coroutine manager.  <br /></td></tr>
 <tr class="separator:abb300510d906cbe517d5054fa05bfbca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abb86cf1ab5a9e47f19baa2f58bb9594c" id="r_abb86cf1ab5a9e47f19baa2f58bb9594c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMyPromise.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmycomanager.html#abb86cf1ab5a9e47f19baa2f58bb9594c">append_task</a> (<a class="el" href="classmycotask.html">mycotask</a> &amp;&amp;<a class="el" href="classMyPromise.html">task</a>)</td></tr>
+<tr class="memdesc:abb86cf1ab5a9e47f19baa2f58bb9594c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a new task to the scheduler.  <br /></td></tr>
 <tr class="separator:abb86cf1ab5a9e47f19baa2f58bb9594c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae93a4a3aa93b5da14c9fde8acab3ed24" id="r_ae93a4a3aa93b5da14c9fde8acab3ed24"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMyPromise.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmycomanager.html#ae93a4a3aa93b5da14c9fde8acab3ed24">run</a> ()</td></tr>
+<tr class="memdesc:ae93a4a3aa93b5da14c9fde8acab3ed24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute all scheduled tasks in round-robin fashion.  <br /></td></tr>
 <tr class="separator:ae93a4a3aa93b5da14c9fde8acab3ed24"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Round-robin scheduler for cooperative multitasking. </p>
+<p>Manages a circular list of coroutines and executes them in round-robin fashion. Each coroutine runs until it yields, then the next coroutine in the list executes. Completed coroutines are automatically removed from the schedule. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a186446764ec179dbf6012a07bfd20d53" name="a186446764ec179dbf6012a07bfd20d53"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a186446764ec179dbf6012a07bfd20d53">&#9670;&#160;</a></span>mycomanager() <span class="overload">[1/2]</span></h2>
 
@@ -116,7 +126,21 @@ template&lt;typename... Tasks&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>This constructor automatically assigns a default priority to each created task. </p>
+
+<p>Construct manager with variadic list of tasks. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Tasks</td><td>Pack of mycotask rvalue references </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ts</td><td>Tasks to add to the scheduler</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Convenience constructor that automatically adds all provided tasks to the manager upon construction. </p>
 
 </div>
 </div>
@@ -143,7 +167,15 @@ template&lt;typename... Tasks&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Create an empty coroutine manager </p>
+
+<p>Create an empty coroutine manager. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">max_number_of_tasks</td><td>Maximum tasks supported (default 1000)</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Initializes an empty scheduler. Tasks must be added via <a class="el" href="classmycomanager.html#abb86cf1ab5a9e47f19baa2f58bb9594c" title="Add a new task to the scheduler.">append_task()</a> before calling <a class="el" href="classmycomanager.html#ae93a4a3aa93b5da14c9fde8acab3ed24" title="Execute all scheduled tasks in round-robin fashion.">run()</a>. </p>
 
 </div>
 </div>
@@ -163,7 +195,15 @@ template&lt;typename... Tasks&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>This function normalizes the priority values. For example, if the current priorities are &lt;1, 2, 3&gt; and a new task is added, the resulting priorities will be &lt;1, 2, 3, 4&gt;. </p>
+
+<p>Add a new task to the scheduler. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">task</td><td>Coroutine task to append (moved)</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Appends the task to the end of the circular list. If this is the first task, it becomes the head. Otherwise, it's linked after the current tail. </p>
 
 </div>
 </div>
@@ -181,7 +221,20 @@ template&lt;typename... Tasks&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Run previously created tasks in order </p>
+
+<p>Execute all scheduled tasks in round-robin fashion. </p>
+<p>Runs coroutines cooperatively until all complete. Each iteration:</p><ol type="1">
+<li>Starts unstarted tasks</li>
+<li>Resumes running tasks</li>
+<li>Removes completed tasks from the schedule</li>
+</ol>
+<p>Exits when all tasks have finished execution.</p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">Calls</td><td>exit(EXIT_FAILURE) if run on empty manager </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

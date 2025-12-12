@@ -78,6 +78,9 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Stackful coroutine with independent execution context.  
+ <a href="classmycotask.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="mycotask_8h_source.html">mycotask.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -87,30 +90,41 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa08ab60f85f5ec83396916ab0dd12ce4" id="r_aa08ab60f85f5ec83396916ab0dd12ce4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmycotask.html">mycotask</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmycotask.html#aa08ab60f85f5ec83396916ab0dd12ce4">operator=</a> (<a class="el" href="classMyPromise.html">const</a> <a class="el" href="classmycotask.html">mycotask</a> &amp;)=<a class="el" href="classMyPromise.html">delete</a></td></tr>
 <tr class="separator:aa08ab60f85f5ec83396916ab0dd12ce4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4823f17e42512bd4c8c903b1af926b98" id="r_a4823f17e42512bd4c8c903b1af926b98"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmycotask.html#a4823f17e42512bd4c8c903b1af926b98">mycotask</a> (<a class="el" href="classmycotask.html">mycotask</a> &amp;&amp;<a class="el" href="classMyPromise.html">other</a>) <a class="el" href="classMyPromise.html">noexcept</a></td></tr>
+<tr class="memdesc:a4823f17e42512bd4c8c903b1af926b98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move constructor.  <br /></td></tr>
 <tr class="separator:a4823f17e42512bd4c8c903b1af926b98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58e83b68949f92a1ac02c3e9812b89a4" id="r_a58e83b68949f92a1ac02c3e9812b89a4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmycotask.html">mycotask</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmycotask.html#a58e83b68949f92a1ac02c3e9812b89a4">operator=</a> (<a class="el" href="classmycotask.html">mycotask</a> &amp;&amp;<a class="el" href="classMyPromise.html">other</a>) <a class="el" href="classMyPromise.html">noexcept</a></td></tr>
+<tr class="memdesc:a58e83b68949f92a1ac02c3e9812b89a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move assignment operator.  <br /></td></tr>
 <tr class="separator:a58e83b68949f92a1ac02c3e9812b89a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a753afee15d597e8a9666bcab8817e946" id="r_a753afee15d597e8a9666bcab8817e946"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmycotask.html#a753afee15d597e8a9666bcab8817e946">~mycotask</a> ()</td></tr>
+<tr class="memdesc:a753afee15d597e8a9666bcab8817e946"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor - cleans up stack and context.  <br /></td></tr>
 <tr class="separator:a753afee15d597e8a9666bcab8817e946"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a48465c8ca699d436b88a8de2826b9007" id="r_a48465c8ca699d436b88a8de2826b9007"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMyPromise.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmycotask.html#a48465c8ca699d436b88a8de2826b9007">operator==</a> (<a class="el" href="classMyPromise.html">const</a> <a class="el" href="classmycotask.html">mycotask</a> &amp;<a class="el" href="classMyPromise.html">other</a>) <a class="el" href="classMyPromise.html">const</a></td></tr>
+<tr class="memdesc:a48465c8ca699d436b88a8de2826b9007"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare coroutines by ID.  <br /></td></tr>
 <tr class="separator:a48465c8ca699d436b88a8de2826b9007"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab5f59db09fd4238bd12d4c2dd8fad320" id="r_ab5f59db09fd4238bd12d4c2dd8fad320"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMyPromise.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmycotask.html#ab5f59db09fd4238bd12d4c2dd8fad320">start</a> ()</td></tr>
+<tr class="memdesc:ab5f59db09fd4238bd12d4c2dd8fad320"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start coroutine execution.  <br /></td></tr>
 <tr class="separator:ab5f59db09fd4238bd12d4c2dd8fad320"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2191deaeb054e043d05c964a1801eb75" id="r_a2191deaeb054e043d05c964a1801eb75"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMyPromise.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmycotask.html#a2191deaeb054e043d05c964a1801eb75">resume</a> ()</td></tr>
+<tr class="memdesc:a2191deaeb054e043d05c964a1801eb75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resume suspended coroutine execution.  <br /></td></tr>
 <tr class="separator:a2191deaeb054e043d05c964a1801eb75"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aab6d60f14cb54bb8c9ec13763ef9e092" id="r_aab6d60f14cb54bb8c9ec13763ef9e092"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMyPromise.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmycotask.html#aab6d60f14cb54bb8c9ec13763ef9e092">yield</a> () <a class="el" href="classMyPromise.html">const</a></td></tr>
+<tr class="memdesc:aab6d60f14cb54bb8c9ec13763ef9e092"><td class="mdescLeft">&#160;</td><td class="mdescRight">Yield execution back to caller.  <br /></td></tr>
 <tr class="separator:aab6d60f14cb54bb8c9ec13763ef9e092"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa031bb286aaf1f911f689f6b3bfd1f0b" id="r_aa031bb286aaf1f911f689f6b3bfd1f0b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMyPromise.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmycotask.html#aa031bb286aaf1f911f689f6b3bfd1f0b">has_ended</a> () <a class="el" href="classMyPromise.html">const</a></td></tr>
+<tr class="memdesc:aa031bb286aaf1f911f689f6b3bfd1f0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if coroutine has completed execution.  <br /></td></tr>
 <tr class="separator:aa031bb286aaf1f911f689f6b3bfd1f0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeb88988a3ae03d85d4a2684cfab4c4a4" id="r_aeb88988a3ae03d85d4a2684cfab4c4a4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMyPromise.html">size_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmycotask.html#aeb88988a3ae03d85d4a2684cfab4c4a4">get_id</a> () <a class="el" href="classMyPromise.html">const</a></td></tr>
+<tr class="memdesc:aeb88988a3ae03d85d4a2684cfab4c4a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get unique coroutine identifier.  <br /></td></tr>
 <tr class="separator:aeb88988a3ae03d85d4a2684cfab4c4a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a127b31a745da8183492a835594b2b3f4" id="r_a127b31a745da8183492a835594b2b3f4"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="classMyPromise.html">typename</a> <a class="el" href="classMyPromise.html">F</a> , typename... Args&gt; </td></tr>
 <tr class="memitem:a127b31a745da8183492a835594b2b3f4"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classMyPromise.html">static</a> <a class="el" href="classmycotask.html">mycotask</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classmycotask.html#a127b31a745da8183492a835594b2b3f4">create_task</a> (<a class="el" href="classMyPromise.html">F</a> &amp;&amp;<a class="el" href="classMyPromise.html">f</a>, <a class="el" href="classMyPromise.html">Args</a> &amp;&amp;... <a class="el" href="classMyPromise.html">args</a>)</td></tr>
+<tr class="memdesc:a127b31a745da8183492a835594b2b3f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new coroutine task.  <br /></td></tr>
 <tr class="separator:a127b31a745da8183492a835594b2b3f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeeda990a32e7faefb9095adb7c9623a9" id="r_aeeda990a32e7faefb9095adb7c9623a9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMyPromise.html">static</a> <a class="el" href="classmycotask.html">mycotask</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmycotask.html#aeeda990a32e7faefb9095adb7c9623a9">current_task</a> ()</td></tr>
+<tr class="memdesc:aeeda990a32e7faefb9095adb7c9623a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get currently executing coroutine.  <br /></td></tr>
 <tr class="separator:aeeda990a32e7faefb9095adb7c9623a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
@@ -121,7 +135,9 @@ Friends</h2></td></tr>
 <tr class="separator:a8b2795c1011840c5459914cc15d6d199"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Custom coroutine class. Do not remove its location from the source of creation For now, only <a class="el" href="classMyPromise.html#adaac1ee386a9895ea1e4234042d5d37d">std::move</a> from not started coroutine is allowed &lt;(raw pointer in the private fields)&gt; </p>
+<div class="textblock"><p>Stackful coroutine with independent execution context. </p>
+<p>A move-only coroutine class supporting cooperative multitasking. Each task has its own stack and can suspend execution via <a class="el" href="classmycotask.html#aab6d60f14cb54bb8c9ec13763ef9e092" title="Yield execution back to caller.">yield()</a>, allowing other coroutines to run. Tasks must be explicitly started and can be resumed until completion.</p>
+<dl class="section warning"><dt>Warning</dt><dd>Do not remove its location from the source of creation. Only <a class="el" href="classMyPromise.html#adaac1ee386a9895ea1e4234042d5d37d" title="Construct promise with manager.">std::move</a> from not started coroutine is allowed. </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="afeaf99fc85f74e09b8c0da2655aa744f" name="afeaf99fc85f74e09b8c0da2655aa744f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afeaf99fc85f74e09b8c0da2655aa744f">&#9670;&#160;</a></span>mycotask() <span class="overload">[1/2]</span></h2>
@@ -173,6 +189,14 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Move constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>Coroutine to move from </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a753afee15d597e8a9666bcab8817e946" name="a753afee15d597e8a9666bcab8817e946"></a>
@@ -189,6 +213,8 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Destructor - cleans up stack and context. </p>
 
 </div>
 </div>
@@ -229,6 +255,24 @@ template&lt;<a class="el" href="classMyPromise.html">typename</a> <a class="el" 
 </table>
 </div><div class="memdoc">
 
+<p>Create a new coroutine task. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">F</td><td>Function type </td></tr>
+    <tr><td class="paramname">Args</td><td>Argument types </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">f</td><td>Function to execute in coroutine </td></tr>
+    <tr><td class="paramname">args</td><td>Arguments to bind to function </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>New mycotask instance</dd></dl>
+<p>Factory method to create coroutines from callable objects with arguments. Arguments are bound immediately using <a class="el" href="classMyPromise.html#adaac1ee386a9895ea1e4234042d5d37d" title="Construct promise with manager.">std::bind</a>. </p>
+
 </div>
 </div>
 <a id="aeeda990a32e7faefb9095adb7c9623a9" name="aeeda990a32e7faefb9095adb7c9623a9"></a>
@@ -253,6 +297,9 @@ template&lt;<a class="el" href="classMyPromise.html">typename</a> <a class="el" 
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Get currently executing coroutine. </p>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to current task, or nullptr if in main context </dd></dl>
 
 </div>
 </div>
@@ -279,6 +326,9 @@ template&lt;<a class="el" href="classMyPromise.html">typename</a> <a class="el" 
 </table>
 </div><div class="memdoc">
 
+<p>Get unique coroutine identifier. </p>
+<dl class="section return"><dt>Returns</dt><dd>Coroutine ID </dd></dl>
+
 </div>
 </div>
 <a id="aa031bb286aaf1f911f689f6b3bfd1f0b" name="aa031bb286aaf1f911f689f6b3bfd1f0b"></a>
@@ -295,6 +345,9 @@ template&lt;<a class="el" href="classMyPromise.html">typename</a> <a class="el" 
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Check if coroutine has completed execution. </p>
+<dl class="section return"><dt>Returns</dt><dd>true if coroutine finished, false otherwise </dd></dl>
 
 </div>
 </div>
@@ -348,6 +401,15 @@ template&lt;<a class="el" href="classMyPromise.html">typename</a> <a class="el" 
 </table>
 </div><div class="memdoc">
 
+<p>Move assignment operator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>Coroutine to move from </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Reference to this </dd></dl>
+
 </div>
 </div>
 <a id="a48465c8ca699d436b88a8de2826b9007" name="a48465c8ca699d436b88a8de2826b9007"></a>
@@ -374,6 +436,15 @@ template&lt;<a class="el" href="classMyPromise.html">typename</a> <a class="el" 
 </table>
 </div><div class="memdoc">
 
+<p>Compare coroutines by ID. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>Coroutine to compare with </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if IDs match </dd></dl>
+
 </div>
 </div>
 <a id="a2191deaeb054e043d05c964a1801eb75" name="a2191deaeb054e043d05c964a1801eb75"></a>
@@ -390,6 +461,15 @@ template&lt;<a class="el" href="classMyPromise.html">typename</a> <a class="el" 
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Resume suspended coroutine execution. </p>
+<p>Continues execution from where the coroutine last yielded. Must be called after <a class="el" href="classmycotask.html#ab5f59db09fd4238bd12d4c2dd8fad320" title="Start coroutine execution.">start()</a> and cannot be called on completed coroutines.</p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">Calls</td><td>exit(EXIT_FAILURE) if not started or already ended </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -408,6 +488,15 @@ template&lt;<a class="el" href="classMyPromise.html">typename</a> <a class="el" 
       </table>
 </div><div class="memdoc">
 
+<p>Start coroutine execution. </p>
+<p>Begins execution of the coroutine from the beginning. Can only be called once per coroutine. Use <a class="el" href="classmycotask.html#a2191deaeb054e043d05c964a1801eb75" title="Resume suspended coroutine execution.">resume()</a> to continue after yielding.</p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">Calls</td><td>exit(EXIT_FAILURE) if already started </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="aab6d60f14cb54bb8c9ec13763ef9e092" name="aab6d60f14cb54bb8c9ec13763ef9e092"></a>
@@ -424,6 +513,9 @@ template&lt;<a class="el" href="classMyPromise.html">typename</a> <a class="el" 
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Yield execution back to caller. </p>
+<p>Suspends current coroutine and returns control to the caller (main context or scheduler). Execution can be resumed later with <a class="el" href="classmycotask.html#a2191deaeb054e043d05c964a1801eb75" title="Resume suspended coroutine execution.">resume()</a>. </p>
 
 </div>
 </div>

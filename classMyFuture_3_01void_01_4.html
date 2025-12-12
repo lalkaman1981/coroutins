@@ -77,6 +77,9 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Future specialization for void promises.  
+ <a href="classMyFuture_3_01void_01_4.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="myfp_8h_source.html">myfp.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for MyFuture&lt; void &gt;:</div>
@@ -87,6 +90,7 @@ Collaboration diagram for MyFuture&lt; void &gt;:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a9acbe68a4647e5003212151b5a034cbd" id="r_a9acbe68a4647e5003212151b5a034cbd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMyPromise.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMyFuture_3_01void_01_4.html#a9acbe68a4647e5003212151b5a034cbd">get</a> ()</td></tr>
+<tr class="memdesc:a9acbe68a4647e5003212151b5a034cbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wait for promise completion.  <br /></td></tr>
 <tr class="separator:a9acbe68a4647e5003212151b5a034cbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -94,7 +98,10 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:ad88b02ff5009ad90e801fda5c61a6813" id="r_ad88b02ff5009ad90e801fda5c61a6813"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMyPromise.html">MyPromise</a>&lt; <a class="el" href="classMyPromise.html">void</a> &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMyFuture_3_01void_01_4.html#ad88b02ff5009ad90e801fda5c61a6813">promise</a> = <a class="el" href="classMyPromise.html">nullptr</a></td></tr>
 <tr class="separator:ad88b02ff5009ad90e801fda5c61a6813"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Future specialization for void promises. </p>
+<p>Waits for completion without retrieving a value. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a9acbe68a4647e5003212151b5a034cbd" name="a9acbe68a4647e5003212151b5a034cbd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9acbe68a4647e5003212151b5a034cbd">&#9670;&#160;</a></span>get()</h2>
 
@@ -109,6 +116,14 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Wait for promise completion. </p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">Rethrows</td><td>stored exception if set </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -128,7 +143,7 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>src/<a class="el" href="myfp_8h_source.html">myfp.h</a></li>
+<li>src/my_fp/<a class="el" href="myfp_8h_source.html">myfp.h</a></li>
 <li>src/my_fp/<a class="el" href="myfp_8cpp.html">myfp.cpp</a></li>
 </ul>
 </div><!-- contents -->

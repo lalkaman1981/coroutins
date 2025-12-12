@@ -77,11 +77,15 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Consumer side of promise-future pair.  
+ <a href="classMyFuture.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="myfp_8h_source.html">myfp.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a9ac2d6781b164798dedf253e7afea425" id="r_a9ac2d6781b164798dedf253e7afea425"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMyPromise.html">T</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMyFuture.html#a9ac2d6781b164798dedf253e7afea425">get</a> ()</td></tr>
+<tr class="memdesc:a9ac2d6781b164798dedf253e7afea425"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wait for and retrieve result value.  <br /></td></tr>
 <tr class="separator:a9ac2d6781b164798dedf253e7afea425"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -89,7 +93,17 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a21553acf591903189cadbd2fe57b50c1" id="r_a21553acf591903189cadbd2fe57b50c1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMyPromise.html">MyPromise</a>&lt; <a class="el" href="classMyPromise.html">T</a> &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMyFuture.html#a21553acf591903189cadbd2fe57b50c1">promise</a> = <a class="el" href="classMyPromise.html">nullptr</a></td></tr>
 <tr class="separator:a21553acf591903189cadbd2fe57b50c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;<a class="el" href="classMyPromise.html">typename</a> <a class="el" href="classMyPromise.html">T</a>&gt;<br />
+class MyFuture&lt; T &gt;</div><p>Consumer side of promise-future pair. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Type of value to retrieve</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Allows coroutines to wait for and retrieve values from promises. Suspends execution until value becomes available. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a9ac2d6781b164798dedf253e7afea425" name="a9ac2d6781b164798dedf253e7afea425"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9ac2d6781b164798dedf253e7afea425">&#9670;&#160;</a></span>get()</h2>
 
@@ -115,6 +129,16 @@ template&lt;<a class="el" href="classMyPromise.html">typename</a> <a class="el" 
 </table>
 </div><div class="memdoc">
 
+<p>Wait for and retrieve result value. </p>
+<dl class="section return"><dt>Returns</dt><dd>The stored value from promise </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">Rethrows</td><td>stored exception if set</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Yields execution repeatedly until promise is ready. If promise contains an exception, it is rethrown to the caller. </p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -131,11 +155,12 @@ template&lt;<a class="el" href="classMyPromise.html">typename</a> <a class="el" 
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Associated promise </p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>src/<a class="el" href="myfp_8h_source.html">myfp.h</a></li>
+<li>src/my_fp/<a class="el" href="myfp_8h_source.html">myfp.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
